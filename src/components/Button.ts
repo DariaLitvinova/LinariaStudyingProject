@@ -1,19 +1,33 @@
 import { styled } from '@linaria/react'
 
-export const Button = styled.button`
-  height: 2rem;
-  padding: 0 0.5rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
+interface ButtonProps {
+  display?: string
+  height?: number
+  gap?: number
+  padding?: string
+  borderRadius?: string
+  justify?: string
+  align?: string
+  cursor?: string
+  backgroundColor: string
+  backgroundColorHover: string
+  backgroundColorActive: string
+}
 
-  border: 1px var(--linaria-2) solid;
-  color: var(--text);
-
-  background-color: #222;
+export const Button = styled.button<ButtonProps>`
+  display: ${({ display = 'flex' }) => display};
+  height: ${({ height = 0 }) => height}px;
+  gap: ${({ gap = 0 }) => gap}px;
+  padding: ${({ padding = 0 }) => padding};
+  border-radius: ${({ borderRadius = '52px' }) => borderRadius};
+  justify-content: ${({ justify = 'center' }) => justify};
+  align-items: ${({ align = 'center' }) => align};
+  cursor: ${({ cursor = 'pointer' }) => cursor};
+  background: ${({ backgroundColor }) => backgroundColor};
   :hover {
-    background-color: #333;
+    background: ${({ backgroundColorHover }) => backgroundColorHover};
   }
   :active {
-    background-color: #444;
+    background: ${({ backgroundColorActive }) => backgroundColorActive};
   }
 `

@@ -7,3 +7,5 @@ export const MOVIE_DIRECTORS =
   'Vincent d’Onofrio, Kim Coates, Avan Jogia, Kandyse Mcclure, Meat Loaf, Kristin Lehman'
 export const MOVIE_STARS =
   'Vincent d’Onofrio, Kim Coates, Avan Jogia, Kandyse Mcclure, Meat Loaf, Kristin Lehman, Luvia Petersen Vincent d’Onofrio, Kim Coates, Avan Jogia'
+export const BTN_TITLE_WATCH = 'Watch Now'
+export const BTN_TITLE_DETAILS = 'Details'

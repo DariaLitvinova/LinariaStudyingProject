@@ -1,26 +1,44 @@
-import { css } from '@linaria/core'
-import { MainTheme } from './components/MainTheme'
 import { Button } from './components/Button'
-import { Stack } from './components/Stack'
-import { Headline } from './components/Headline'
-import { GradientText } from './components/GradientText'
+import { Banner } from './components/Banner'
+import { ButtonText } from './components/ButtonText'
+import { SectionWrapper } from './components/SectionWrapper'
+import { BTN_TITLE_DETAILS, BTN_TITLE_WATCH } from './constants/constants'
 
 const App = () => {
   return (
-    <Stack align='center' justify='center' gap={0.75} stretch>
-      <Headline>
-        <GradientText>rerere</GradientText>
-      </Headline>
-      <MainTheme />
-      <p
-        className={css`
-          margin: 0;
-        `}
+    <SectionWrapper>
+      <Banner
+        justify='flex-end'
+        gap={52}
+        padding='64px 135px'
+        maxWidth={1920}
+        height={892}
+        margin='0 auto'
       >
-        Linaria is a zero-runtime CSS in JS
-      </p>
-      <Button>I am clickable! 🫧</Button>
-    </Stack>
+        <Button
+          display='inline-flex'
+          gap={8}
+          height={52}
+          padding='0px 24px'
+          backgroundColor='var(--new-primary-primary-gradient)'
+          backgroundColorHover='var(--new-primary-primary-gradient-hover)'
+          backgroundColorActive='var(--new-primary-primary-gradient-pressed)'
+        >
+          <ButtonText lineHeight="24px" weight='700'>{BTN_TITLE_WATCH}</ButtonText>
+        </Button>
+        <Button
+          display='inline-flex'
+          gap={8}
+          height={52}
+          padding='0px 24px'
+          backgroundColor='var(--new-surface-surface-opacity-3)'
+          backgroundColorHover='var(--new-surface-surface-3)'
+          backgroundColorActive='var(--new-surface-surface-opacity-2)'
+        >
+          <ButtonText lineHeight="24px" weight='700'>{BTN_TITLE_DETAILS}</ButtonText>
+        </Button>
+      </Banner>
+    </SectionWrapper>
   )
 }
 
