@@ -11,6 +11,7 @@ interface BannerProps {
   maxWidth?: number
   height?: number
   margin?: string
+  url?: string
 }
 
 export const Banner = styled.div<BannerProps>`
@@ -25,7 +26,7 @@ export const Banner = styled.div<BannerProps>`
     orientation === 'horizontal' ? 'row' : 'column'};
   gap: ${({ gap = 0 }) => gap}px;
   align-items: ${({ align = 'start' }) => align};
-  background-image: url(../assets/horizontal-tenet.png);
+  background-image: ${({ url='' }) => `url(${url})`};
   box-sizing: border-box;
   background-size: cover;
   background-repeat: no-repeat;
