@@ -1,8 +1,9 @@
 import React from 'react'
-import { MOVIE_TAGS } from '../../../constants/constants'
+import { CAST_INFORMATION, MOVIE_TAGS } from '../../../constants/constants'
 import TagButton from '../../Buttons/TagButton'
 import { Block } from '../../LinariaComponents/Block'
 import { Dot } from '../../LinariaComponents/Dot'
+import CastInformation from './CastInformation'
 
 const AdditionalInfoSection = () => {
   return (
@@ -13,6 +14,11 @@ const AdditionalInfoSection = () => {
             <TagButton text={tagText} />
             {index !== MOVIE_TAGS.length - 1 && <Dot />}
           </React.Fragment>
+        ))}
+      </Block>
+      <Block gap={16}>
+        {CAST_INFORMATION.map(({ id, data }) => (
+          <CastInformation key={id} data={data} />
         ))}
       </Block>
     </Block>

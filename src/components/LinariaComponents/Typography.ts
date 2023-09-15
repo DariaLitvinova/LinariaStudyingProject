@@ -11,10 +11,12 @@ interface TypographyProps {
   overflow?: 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto' | 'inherit'
   lineClamp?: string
   boxOrient?: string
+  minWidth?: string 
 }
 
 export const Typography = styled.p<TypographyProps>`
   margin: 0;
+  min-width: ${({ minWidth = '' }) => minWidth};
   color: ${({ color = 'var(--new-on-surface-on-surface-1' }) => color};
   font-family: 'Plus Jakarta Sans';
   font-size: ${({ size = 16 }) => size}px;
