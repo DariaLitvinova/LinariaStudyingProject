@@ -13,6 +13,10 @@ interface ButtonProps {
   backgroundColorHover: string
   backgroundColorActive: string
   width?: string
+  border?: string
+  color?: string
+  colorHover?: string
+  colorActive?: string
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -22,6 +26,7 @@ export const Button = styled.button<ButtonProps>`
   gap: ${({ gap = 0 }) => gap}px;
   padding: ${({ padding = 0 }) => padding};
   border-radius: ${({ borderRadius = '52px' }) => borderRadius};
+  border: ${({ border = 'none' }) => border};
   justify-content: ${({ justify = 'center' }) => justify};
   align-items: ${({ align = 'center' }) => align};
   cursor: ${({ cursor = 'pointer' }) => cursor};
@@ -31,5 +36,16 @@ export const Button = styled.button<ButtonProps>`
   }
   :active {
     background: ${({ backgroundColorActive }) => backgroundColorActive};
+  }
+  span {
+    color: ${({ color = 'var(--new-on-surface-on-surface-1' }) => color};
+    :hover {
+      color: ${({ colorHover = 'var(--new-on-surface-on-surface-1' }) =>
+        colorHover};
+    }
+    :active {
+      color: ${({ colorActive = 'var(--new-on-surface-on-surface-1' }) =>
+        colorActive};
+    }
   }
 `

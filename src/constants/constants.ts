@@ -9,7 +9,13 @@ export const MOVIE_STARS =
   'Vincent d’Onofrio, Kim Coates, Avan Jogia, Kandyse Mcclure, Meat Loaf, Kristin Lehman, Luvia Petersen Vincent d’Onofrio, Kim Coates, Avan Jogia'
 export const BTN_TITLE_WATCH = 'Watch Now'
 export const BTN_TITLE_DETAILS = 'Details'
-export const MOVIE_TAGS = ['Thriller', 'Horror', 'Drama', 'Action', 'Comedy']
+export const MOVIE_TAGS = [
+  { id: 0, tagText: 'Thriller' },
+  { id: 1, tagText: 'Horror' },
+  { id: 2, tagText: 'Drama' },
+  { id: 3, tagText: 'Action' },
+  { id: 4, tagText: 'Comedy' },
+]
 export const MOVIE_LABELS = [
   { id: 0, text: 'PG-13' },
   { id: 1, text: '1h 42m' },
