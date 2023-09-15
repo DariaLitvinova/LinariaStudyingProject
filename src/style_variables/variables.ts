@@ -26,7 +26,9 @@ css`
       );
       --new-surface-surface-3: #333;
       --new-surface-surface-opacity-3: rgba(255, 255, 255, 0.10);
-      --new-surface-surface-opacity-2: rgba(1, 1, 1, 0.60)
+      --new-surface-surface-opacity-2: rgba(1, 1, 1, 0.60);
+      --new-outline-border-3: #333;
+      --new-surface-surface-4: #252525;
     }
 
     @font-face {

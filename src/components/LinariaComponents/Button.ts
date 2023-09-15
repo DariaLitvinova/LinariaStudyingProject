@@ -12,10 +12,12 @@ interface ButtonProps {
   backgroundColor: string
   backgroundColorHover: string
   backgroundColorActive: string
+  width?: string
 }
 
 export const Button = styled.button<ButtonProps>`
   display: ${({ display = 'flex' }) => display};
+  width: ${({ width = '' }) => width};
   height: ${({ height = 0 }) => height}px;
   gap: ${({ gap = 0 }) => gap}px;
   padding: ${({ padding = 0 }) => padding};
