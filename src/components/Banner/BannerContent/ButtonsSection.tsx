@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   BTN_TITLE_DETAILS,
   BTN_TITLE_WATCH,
@@ -11,6 +12,12 @@ import PlayIcon from '../../Icons/PlayIcon'
 import { Block } from '../../LinariaComponents/Block'
 
 const ButtonsSection = () => {
+  const [isFavourite, setIsFavourite] = useState<boolean>(false)
+
+  const actionIcon = ({ isActive }: { isActive: boolean }) => (
+    <HeartIcon isActive={isActive} />
+  )
+
   return (
     <Block gap={16} orientation='horizontal'>
       <PrimaryButton text={BTN_TITLE_WATCH}>
@@ -20,9 +27,9 @@ const ButtonsSection = () => {
       <SecondaryButton text={BTN_TITLE_DETAILS}>
         <InfoIcon />
       </SecondaryButton>
-      
-      <ActionButton>
-        <HeartIcon />
+
+      <ActionButton isActive={isFavourite} setIsActive={setIsFavourite}>
+        {actionIcon({ isActive: isFavourite })}
       </ActionButton>
     </Block>
   )

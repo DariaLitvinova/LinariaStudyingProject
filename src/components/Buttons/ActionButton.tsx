@@ -1,13 +1,16 @@
-import { useState } from 'react'
 import { Button } from '../LinariaComponents/Button'
 
 interface ActionButtonProps {
-    children: JSX.Element
-  }
+  isActive: boolean
+  setIsActive: (newState: boolean) => void
+  children: JSX.Element
+}
 
-const ActionButton = ({children}: ActionButtonProps) => {
-  const [isFavourite, setIsFavourite] = useState<boolean>(false)
-  
+const ActionButton = ({
+  isActive,
+  setIsActive,
+  children,
+}: ActionButtonProps) => {
   return (
     <Button
       gap={8}
@@ -16,6 +19,7 @@ const ActionButton = ({children}: ActionButtonProps) => {
       backgroundColor='var(--new-surface-surface-opacity-3)'
       backgroundColorHover='var(--new-surface-surface-3)'
       backgroundColorActive='var(--new-surface-surface-opacity-2)'
+      onClick={() => setIsActive(!isActive)}
     >
       {children}
     </Button>
