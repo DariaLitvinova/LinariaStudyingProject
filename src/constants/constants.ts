@@ -10,3 +10,7 @@ export const MOVIE_STARS =
 export const BTN_TITLE_WATCH = 'Watch Now'
 export const BTN_TITLE_DETAILS = 'Details'
 export const MOVIE_TAGS = ['Thriller', 'Horror', 'Drama', 'Action', 'Comedy']
+export const MOVIE_LABELS = [
+  { id: 0, text: 'PG-13' },
+  { id: 1, text: '1h 42m' },
+]
