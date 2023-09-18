@@ -49,3 +49,7 @@ export const Button = styled.button<ButtonProps>`
     }
   }
 `
+
+export const SquareButton = styled(Button)`
+  border-radius: 0px;
+`;

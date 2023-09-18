@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {
+  BTN_TEXT_SQUARE,
   BTN_TITLE_DETAILS,
   BTN_TITLE_WATCH,
 } from '../../../constants/constants'
@@ -10,6 +11,7 @@ import HeartIcon from '../../Icons/HeartIcon'
 import InfoIcon from '../../Icons/InfoIcon'
 import PlayIcon from '../../Icons/PlayIcon'
 import { Block } from '../../LinariaComponents/Block'
+import PrimarySquareButton from '../../Buttons/PrimarySquareButton'
 
 const ButtonsSection = () => {
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
@@ -31,6 +33,8 @@ const ButtonsSection = () => {
       <ActionButton isActive={isFavourite} setIsActive={setIsFavourite}>
         {actionIcon({ isActive: isFavourite })}
       </ActionButton>
+
+      <PrimarySquareButton text={BTN_TEXT_SQUARE}/>
     </Block>
   )
 }

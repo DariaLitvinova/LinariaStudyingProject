@@ -7,7 +7,7 @@ export const USER_ROLE = 'Creator'
 export const MOVIE_DESCRIPTION =
   'Just as troubled medium Roman Mercer prepares to leave the one-horse town of Port Moore, an earthquake strikes the Alaskan island and awakens a supernatural force hell-bent on destruction.Just as troubled medium Roman Mercer prepares to leave the one-horse town of Port Moore, an earthquake strikes t'
 
-  export const CAST_INFORMATION = [
+export const CAST_INFORMATION = [
   {
     id: 0,
     data: {
@@ -39,3 +39,5 @@ export const MOVIE_LABELS = [
   { id: 0, text: 'PG-13' },
   { id: 1, text: '1h 42m' },
 ]
+
+export const BTN_TEXT_SQUARE = 'Just for a test'
