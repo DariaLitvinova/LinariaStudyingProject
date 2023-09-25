@@ -1,3 +1,4 @@
+import { COLORS } from '../../style_variables/COLORS'
 import { Button } from '../LinariaComponents/Button'
 import { ButtonText } from '../LinariaComponents/ButtonText'
 
@@ -13,9 +14,9 @@ const PrimaryButton = ({ children, text }: PrimaryButtonProps) => {
       gap={8}
       height={52}
       padding='0px 24px'
-      backgroundColor='var(--new-primary-primary-gradient)'
-      backgroundColorHover='var(--new-primary-primary-gradient-hover)'
-      backgroundColorActive='var(--new-primary-primary-gradient-pressed)'
+      backgroundColor={COLORS.NEW_PRIMARY_GRADIENT}
+      backgroundColorHover={COLORS.NEW_PRIMARY_GRADIENT_HOVER}
+      backgroundColorActive={COLORS.NEW_PRIMARY_GRADIENT_PRESSED}
     >
       {children}
       <ButtonText lineHeight='24px' weight='700'>

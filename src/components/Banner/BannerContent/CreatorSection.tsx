@@ -1,4 +1,5 @@
 import { CREATOR_USERNAME, USER_ROLE } from '../../../constants/constants'
+import { COLORS } from '../../../style_variables/COLORS'
 import { Avatar } from '../../LinariaComponents/Avatar'
 import { Block } from '../../LinariaComponents/Block'
 import { Typography } from '../../LinariaComponents/Typography'
@@ -11,7 +12,7 @@ const CreatorSection = () => {
         <Typography
           lineHeight='24px'
           weight='400'
-          color='var(--new-on-surface-on-surface-2)'
+          color={COLORS.NEW_SURFACE_ON_SURFACE_2}
         >
           {USER_ROLE}
         </Typography>

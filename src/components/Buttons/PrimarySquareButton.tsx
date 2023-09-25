@@ -1,21 +1,28 @@
+import { COLORS } from '../../style_variables/COLORS'
 import { SquareButton } from '../LinariaComponents/Button'
 import { ButtonText } from '../LinariaComponents/ButtonText'
 
 interface PrimaryButtonProps {
   children?: JSX.Element
   text: string
+  onClick?: () => void
 }
 
-const PrimarySquareButton = ({ children, text }: PrimaryButtonProps) => {
+const PrimarySquareButton = ({
+  children,
+  text,
+  onClick,
+}: PrimaryButtonProps) => {
   return (
     <SquareButton
       display='inline-flex'
       gap={8}
       height={52}
       padding='0px 24px'
-      backgroundColor='var(--new-primary-primary-gradient)'
-      backgroundColorHover='var(--new-primary-primary-gradient-hover)'
-      backgroundColorActive='var(--new-primary-primary-gradient-pressed)'
+      backgroundColor={COLORS.NEW_PRIMARY_GRADIENT}
+      backgroundColorHover={COLORS.NEW_PRIMARY_GRADIENT_HOVER}
+      backgroundColorActive={COLORS.NEW_PRIMARY_GRADIENT_PRESSED}
+      onClick={onClick}
     >
       {children}
       <ButtonText lineHeight='24px' weight='700'>

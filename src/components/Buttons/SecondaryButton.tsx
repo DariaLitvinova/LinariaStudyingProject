@@ -1,3 +1,4 @@
+import { COLORS } from '../../style_variables/COLORS'
 import { Button } from '../LinariaComponents/Button'
 import { ButtonText } from '../LinariaComponents/ButtonText'
 import { Icon } from '../LinariaComponents/Icon'
@@ -14,9 +15,9 @@ const SecondaryButton = ({ children, text }: SecondaryButtonProps) => {
       gap={8}
       height={52}
       padding='0px 24px'
-      backgroundColor='var(--new-surface-surface-opacity-3)'
-      backgroundColorHover='var(--new-surface-surface-3)'
-      backgroundColorActive='var(--new-surface-surface-opacity-2)'
+      backgroundColor={COLORS.NEW_SURFACE_OPACITY_3}
+      backgroundColorHover={COLORS.NEW_SURFACE_3}
+      backgroundColorActive={COLORS.NEW_SURFACE_OPACITY_2}
     >
       {children}
       <ButtonText lineHeight='24px' weight='700'>

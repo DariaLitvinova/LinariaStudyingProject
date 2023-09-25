@@ -1,4 +1,5 @@
 import { styled } from '@linaria/react'
+import { COLORS } from '../../style_variables/COLORS'
 
 interface ButtonProps {
   display?: string
@@ -30,26 +31,26 @@ export const Button = styled.button<ButtonProps>`
   justify-content: ${({ justify = 'center' }) => justify};
   align-items: ${({ align = 'center' }) => align};
   cursor: ${({ cursor = 'pointer' }) => cursor};
-  background: ${({ backgroundColor }) => backgroundColor};
+  background: ${({ backgroundColor }) => `var(${backgroundColor})`};
   :hover {
-    background: ${({ backgroundColorHover }) => backgroundColorHover};
+    background: ${({ backgroundColorHover }) => `var(${backgroundColorHover})`};
   }
   :active {
-    background: ${({ backgroundColorActive }) => backgroundColorActive};
+    background: ${({ backgroundColorActive }) => `var(${backgroundColorActive})`};
   }
   span {
-    color: ${({ color = 'var(--new-on-surface-on-surface-1' }) => color};
+    color: ${({ color = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})` }) => color};
     :hover {
-      color: ${({ colorHover = 'var(--new-on-surface-on-surface-1' }) =>
+      color: ${({ colorHover = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})` }) =>
         colorHover};
     }
     :active {
-      color: ${({ colorActive = 'var(--new-on-surface-on-surface-1' }) =>
+      color: ${({ colorActive = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})` }) =>
         colorActive};
     }
   }
 `
 
 export const SquareButton = styled(Button)`
-  border-radius: 0px;
+  border-radius: 5px;
 `;

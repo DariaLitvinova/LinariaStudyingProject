@@ -1,3 +1,4 @@
+import { COLORS } from '../../style_variables/COLORS'
 import { Button } from '../LinariaComponents/Button'
 import { ButtonText } from '../LinariaComponents/ButtonText'
 
@@ -13,8 +14,8 @@ const TagButton = ({ text }: TagButtonProps) => {
       backgroundColor='transparent'
       backgroundColorHover='transparent'
       backgroundColorActive='transparent'
-      color='var(--new-on-surface-on-surface-2)'
-      colorActive='var(--new-on-surface-on-surface-3)'
+      color={`var(${COLORS.NEW_SURFACE_ON_SURFACE_2})`}
+      colorActive={`var(${COLORS.NEW_SURFACE_ON_SURFACE_3})`}
     >
       <ButtonText
         lineHeight='16px'

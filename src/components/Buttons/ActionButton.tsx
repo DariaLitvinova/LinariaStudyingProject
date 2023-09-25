@@ -1,3 +1,4 @@
+import { COLORS } from '../../style_variables/COLORS'
 import { Button } from '../LinariaComponents/Button'
 
 interface ActionButtonProps {
@@ -16,9 +17,9 @@ const ActionButton = ({
       gap={8}
       height={52}
       width='52px'
-      backgroundColor='var(--new-surface-surface-opacity-3)'
-      backgroundColorHover='var(--new-surface-surface-3)'
-      backgroundColorActive='var(--new-surface-surface-opacity-2)'
+      backgroundColor={COLORS.NEW_SURFACE_OPACITY_3}
+      backgroundColorHover={COLORS.NEW_SURFACE_3}
+      backgroundColorActive={COLORS.NEW_SURFACE_OPACITY_2}
       onClick={() => setIsActive(!isActive)}
     >
       {children}

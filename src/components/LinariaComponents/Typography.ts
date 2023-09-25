@@ -1,4 +1,5 @@
 import { styled } from '@linaria/react'
+import { COLORS } from '../../style_variables/COLORS'
 
 interface TypographyProps {
   color?: string
@@ -17,7 +18,7 @@ interface TypographyProps {
 export const Typography = styled.p<TypographyProps>`
   margin: 0;
   min-width: ${({ minWidth = '' }) => minWidth};
-  color: ${({ color = 'var(--new-on-surface-on-surface-1' }) => color};
+  color: ${({ color = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})` }) => `var(${color})`};
   font-family: 'Plus Jakarta Sans';
   font-size: ${({ size = 16 }) => size}px;
   font-style: ${({ style = 'normal' }) => style};
