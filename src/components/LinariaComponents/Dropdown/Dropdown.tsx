@@ -1,14 +1,14 @@
-import { HTMLInputTypeAttribute, ReactNode, type KeyboardEvent } from 'react'
+import { ReactNode, type KeyboardEvent, ChangeEventHandler } from 'react'
 import { Block } from '../Block'
 import { Typography } from '../Typography'
-import { InputSC } from './Input.styled'
+import { DropdownSC } from './Dropdown.styled'
 import { CSSProperties } from '@linaria/core'
 import { COLORS } from '../../../style_variables/COLORS'
+import { DropdownItem } from './DropdownItem'
 
-export interface IInputProps {
+export interface IDropdownProps {
   children?: ReactNode
   id?: string
-  type?: HTMLInputTypeAttribute
   name?: string
   pattern?: string
   value?: string
@@ -29,18 +29,17 @@ export interface IInputProps {
   borderColorInvalid?: string
   autoComplete?: string
   autoFocus?: boolean
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void
+  onChange: ChangeEventHandler<HTMLSelectElement>
   className?: string
   style?: CSSProperties
   invalid?: boolean
 }
 
-export const Input = ({
-  type = 'text',
+export const Dropdown = ({
   name = '',
+  value = '',
   placeholder = '',
+  id = '',
   placeholderColor = COLORS.NEW_SURFACE_ON_SURFACE_2,
   label = '',
   colorDefault = COLORS.NEW_SURFACE_5,
@@ -49,27 +48,20 @@ export const Input = ({
   borders = '1px',
   corners = '3px',
   invalid,
-  autoComplete,
   borderColorDefault = COLORS.NEW_OUTLINE_BORDER,
   borderColorInvalid = COLORS.ERROR,
-}: IInputProps): JSX.Element => {
+  children,
+  onChange,
+}: IDropdownProps): JSX.Element => {
   return (
     <Block justify='center' gap={2}>
       <Typography size={12} color={COLORS.NEW_SURFACE_5}>
         {label}
       </Typography>
-      <InputSC
-        type={type}
+      <DropdownSC
         name={name}
-        // pattern={pattern}
-        // value={value}
-        // defaultValue={defaultValue}
-        // min={min}
-        // max={max}
-        // minLength={minLength}
-        // maxLength={maxLength}
-        autoComplete={autoComplete}
-        placeholder={placeholder}
+        id={id}
+        value={value}
         placeholderColor={placeholderColor}
         borderColorDefault={borderColorDefault}
         borderColorInvalid={borderColorInvalid}
@@ -79,7 +71,17 @@ export const Input = ({
         required={required}
         invalid={invalid}
         borders={borders}
-      />
+        onChange={onChange}
+      >
+        {placeholder && (
+          <DropdownItem
+            value=''
+            text={placeholder}
+            hidden
+          />
+        )}
+        {children}
+      </DropdownSC>
     </Block>
   )
 }

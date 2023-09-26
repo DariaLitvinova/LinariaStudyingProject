@@ -6,15 +6,18 @@ interface PrimaryButtonProps {
   children?: JSX.Element
   text: string
   onClick?: () => void
+  type?: 'button' | 'submit' | 'reset'
 }
 
 const PrimarySquareButton = ({
   children,
   text,
   onClick,
+  type = 'button',
 }: PrimaryButtonProps) => {
   return (
     <SquareButton
+      type={type}
       display='inline-flex'
       gap={8}
       height={52}

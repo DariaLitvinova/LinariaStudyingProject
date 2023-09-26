@@ -5,7 +5,7 @@ type ModalStoreType = {
 }
 
 const initialModalState = {
-  isOpenModal: false,
+  isOpenModal: true, //false,
 }
 
 export const openModalForm = createEvent<boolean>()

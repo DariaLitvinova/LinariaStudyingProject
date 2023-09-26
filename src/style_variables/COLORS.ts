@@ -13,4 +13,5 @@ export enum COLORS {
   NEW_SURFACE_4 = '--new-surface-surface-4',
   SURFACE_GRADIENT_1 = '--color-surface-gradient-1',
   SURFACE_GRADIENT_2 = '--color-surface-gradient-2',
+  ERROR = '--color-error',
 }

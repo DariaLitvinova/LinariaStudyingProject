@@ -41,6 +41,7 @@ css`
         rgba(0, 0, 0, 0) 14.11%,
         rgba(0, 0, 0, 0.74) 71.42%
       );
+      ${COLORS.ERROR}: #B63948;
     }
 
     @font-face {

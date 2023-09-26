@@ -1,20 +1,20 @@
 import { styled } from '@linaria/react'
-import { IInputProps } from './Input'
+import { IDropdownProps } from './Dropdown'
 
-interface IInputSC extends IInputProps {
+interface IDropdownSC extends IDropdownProps {
   inputHeight?: string
 }
 
-export const InputSC = styled.input<IInputSC>`
+export const DropdownSC = styled.select<IDropdownSC>`
   width: 100%;
   box-sizing: border-box;
   height: ${({ inputHeight }) => inputHeight || 'auto'};
   font-family: 'Plus Jakarta Sans';
   font-size: 16px;
-  color: ${({ disabled, colorDefault }) =>
-    disabled ? 'inherit' : `var(${colorDefault})`};
+  color: ${({ value, colorDefault, placeholderColor }) =>
+    value ? `var(${colorDefault})` : `var(${placeholderColor})`};
   border: ${({ borders }) =>
-    borders ? `${borders} solid transparent` : 'initial'};
+    borders ? `var(${borders}) solid transparent` : 'initial'};
   border-width: ${({ borders }) => borders || 'initial'};
   border-color: ${({ invalid, borderColorDefault, borderColorInvalid }) =>
     invalid ? `var(${borderColorInvalid})` : `var(${borderColorDefault})`};
@@ -22,8 +22,8 @@ export const InputSC = styled.input<IInputSC>`
   padding: 14px 10.5px;
   border-radius: ${({ corners = '3px' }) => corners};
   cursor: pointer;
-  &::placeholder {
-    color: ${({ placeholderColor }) =>
-      placeholderColor ? `var(${placeholderColor})` : 'inherit'};
-  }
+  appearance: none;
+  background: url('src/assets/images/icons/chevron-down.svg') no-repeat right;
+  background-size: 20px;
+  background-position-x: calc(100% - 8px);
 `
