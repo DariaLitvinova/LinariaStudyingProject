@@ -9,13 +9,11 @@ import MovieTitleSection from './BannerContent/MovieTitleSection'
 import { ModalForm } from '../LinariaComponents/ModalForm/ModalForm'
 import { LayerModalFixed } from '../LinariaComponents/LayerModal/LayerModalFixed'
 import { Input } from '../LinariaComponents/Input/Input'
-
+import { $modalStore, closeModalForm, openModalForm } from '../../store/store'
+import { useStore } from 'effector-react'
 
 const BannerContent = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false)
-
-  const openModalForm = () => setIsOpenModal(true)
-  const closeModalForm = () => setIsOpenModal(false)
+  const { isOpenModal } = useStore($modalStore);
 
   const onSubmit = () => console.log('submit')
 
@@ -30,7 +28,7 @@ const BannerContent = () => {
       </AbsoluteWrapper>
       <LayerModalFixed
         isOpened={isOpenModal}
-        // onClickForClosingPopup={closeModalForm}
+        onClickForCloseModal={closeModalForm}
       >
         <ModalForm width='343px' height='auto' onSubmit={onSubmit}>
           <Input

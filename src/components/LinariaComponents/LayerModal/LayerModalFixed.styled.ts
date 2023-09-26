@@ -5,9 +5,10 @@ interface ILayerModalFixedSC {
 }
 
 export const LayerModalFixedSC = styled.div<ILayerModalFixedSC>`
-  background-color: ${({ overlayFullColor = '' }) => `var(${overlayFullColor})`};
-  height: 100vh;
-  width: 100vw;
+  background-color: ${({ overlayFullColor = '' }) =>
+    `var(${overlayFullColor})`};
+  height: 100%;
+  width: 100%;
   position: fixed;
   display: flex;
   justify-content: center;

@@ -20,4 +20,6 @@ export const ModalFormSC = styled.form<
   justify-content: ${({ justifyContent }) => justifyContent ?? 'initial'};
   flex-wrap: ${({ wrap }) => wrap ?? 'initial'};
   border-radius: 32px;
+  position: relative;
+  z-index: 5;
 `

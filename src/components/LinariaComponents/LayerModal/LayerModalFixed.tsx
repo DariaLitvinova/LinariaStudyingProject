@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import { CSSProperties } from '@linaria/react'
 import { LayerModalFixedSC } from './LayerModalFixed.styled'
 import { OverlayLayoutColors } from './LayerModal.h'
+import { Block } from '../Block'
 
 export interface ILayerModal {
   children: ReactNode | ReactNode[]
@@ -17,16 +18,27 @@ export interface ILayerModal {
 export const LayerModalFixed = ({
   children,
   overlayFullColor = OverlayLayoutColors.SURFACE_OPACITY_2,
+  isOpened,
+  onClickForCloseModal,
   style,
   ...rest
 }: ILayerModal): JSX.Element => {
   return (
-    <LayerModalFixedSC
-      overlayFullColor={overlayFullColor}
-      style={style}
-      {...rest}
-    >
-      {children}
-    </LayerModalFixedSC>
+    <>
+      {isOpened && (
+        <LayerModalFixedSC
+          overlayFullColor={overlayFullColor}
+          style={style}
+          {...rest}
+        >
+          <Block
+            height='100%'
+            position='fixed'
+            onClick={onClickForCloseModal}
+          />
+          {children}
+        </LayerModalFixedSC>
+      )}
+    </>
   )
 }
