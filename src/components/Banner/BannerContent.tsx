@@ -7,30 +7,35 @@ import CreatorSection from './BannerContent/CreatorSection'
 import MovieTitleSection from './BannerContent/MovieTitleSection'
 import { ModalForm } from '../LinariaComponents/ModalForm/ModalForm'
 import { LayerModalFixed } from '../LinariaComponents/LayerModal/LayerModalFixed'
-import { Input } from '../LinariaComponents/Input/Input'
-import { $modalStore, closeModalForm, openModalForm } from '../../store/store'
+import {
+  $modalStore,
+  closeModalForm,
+  closeModalSuccess,
+  openModalForm,
+} from '../../store/store'
 import { useStore } from 'effector-react'
-import { RadioButtonGroup } from '../LinariaComponents/Radio/RadioButtonGroup'
-import { RadioButton } from '../LinariaComponents/Radio/RadioButton'
-import { COUNTRIES } from '../../constants/constants'
-import { Dropdown } from '../LinariaComponents/Dropdown/Dropdown'
-import { DropdownItem } from '../LinariaComponents/Dropdown/DropdownItem'
-import { SyntheticEvent, useState } from 'react'
-import { Checkbox } from '../LinariaComponents/Checkbox/Checkbox'
-import { FileInputUpload } from '../LinariaComponents/FileInputUpload/FileInputUpload'
+import { SyntheticEvent, useEffect } from 'react'
+import { useForm } from 'effector-forms'
+import ModalContent from './ModalContent'
+import { Typography } from '../LinariaComponents/Typography'
 import { COLORS } from '../../style_variables/COLORS'
+import { userForm } from '../../store/userForm/model'
 
 const BannerContent = () => {
-  const { isOpenModal } = useStore($modalStore)
+  const { isOpenModal, isSuccess } = useStore($modalStore)
+
+  useEffect(() => {
+    if (isSuccess) {
+      setTimeout(closeModalSuccess, 5000)
+    }
+  }, [isSuccess])
+
+  const { fields, submit } = useForm(userForm)
 
   const onSubmit = (e: SyntheticEvent<Element, Event>) => {
     e.preventDefault()
-    console.log(e)
-    console.log('submit')
+    submit()
   }
-
-  const [valueSelect, setValueSelect] = useState('')
-  console.log(valueSelect)
 
   return (
     <Block gap={52} width='817px' justify='flex-end' align='flex-start'>
@@ -38,6 +43,31 @@ const BannerContent = () => {
       <MovieTitleSection />
       <ButtonsSection />
       <AdditionalInfoSection />
+      {isSuccess && (
+        <Block
+          position='fixed'
+          width='100%'
+          height='100%'
+          justify='center'
+          align='center'
+          zIndex={100}
+          style={{ top: 0, left: 0 }}
+        >
+          <Typography
+            color={COLORS.NEW_SURFACE_3}
+            size={24}
+            style={{
+              background: 'white',
+              padding: '20px 40px',
+              borderRadius: '10px',
+              boxSizing: 'border-box',
+              border: `var(${COLORS.NEW_OUTLINE_BORDER}) 4px solid`,
+            }}
+          >
+            {fields.name.value}, thanks for your request!
+          </Typography>
+        </Block>
+      )}
       <AbsoluteWrapper top='20px' right='20px'>
         <PrimarySquareButton text='Contact us' onClick={openModalForm} />
       </AbsoluteWrapper>
@@ -46,81 +76,7 @@ const BannerContent = () => {
         onClickForCloseModal={closeModalForm}
       >
         <ModalForm width='363px' height='auto' onSubmit={onSubmit}>
-          <Input
-            name='name'
-            type='text'
-            label='Name'
-            placeholder='Enter your Name'
-            height='48px'
-          />
-          <Input
-            name='name'
-            type='text'
-            label='Email'
-            placeholder='Enter your Email'
-            height='48px'
-          />
-          <Input
-            name='name'
-            type='text'
-            label='Phone'
-            placeholder='Enter your Phone'
-            height='48px'
-          />
-          <Dropdown
-            name='country'
-            label='Select your country'
-            required
-            value={valueSelect}
-            defaultValue={valueSelect}
-            onChange={(event) => setValueSelect(event.target.value)}
-            // title={fields.gender.value}
-            placeholder='Select your Country'
-          >
-            {COUNTRIES.map((country, index) => (
-              <DropdownItem
-                key={`${index}${country}`}
-                value={country}
-                text={country}
-                // selected={valueSelect === country}
-                // activeId={fields.gender.value}
-                // onClick={() => welcomeForm.fields.gender.set(gender)}
-              />
-            ))}
-          </Dropdown>
-
-          <RadioButtonGroup title='Gender'>
-            <RadioButton
-              id='man'
-              name='gender'
-              title='Man'
-              value='man'
-              // selectedValue={fields.gender.value}
-              // onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              //   value(profileForm.fields.gender.set)({ value: e.target.value })
-              // }
-            />
-            <RadioButton
-              id='woman'
-              name='gender'
-              title='Woman'
-              value='woman'
-              // selectedValue={fields.gender.value}
-              // onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              //   value(profileForm.fields.gender.set)({ value: e.target.value })
-              // }
-            />
-          </RadioButtonGroup>
-          <FileInputUpload id="photo" name='photo' title='Load your photo'/>
-          <Block height='1px' bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2} margin='10px 0'/>
-          <Checkbox
-            name='agreement'
-            id='agreement'
-            title='I agree with the processing of personal data'
-            checked={false}
-          />
-          <Block height='1px' bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2} margin='10px 0'/>
-          <PrimarySquareButton text='Contact us' type='submit' />
+          <ModalContent />
         </ModalForm>
       </LayerModalFixed>
     </Block>

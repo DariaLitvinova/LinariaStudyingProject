@@ -13,6 +13,7 @@ interface ButtonProps {
   backgroundColor: string
   backgroundColorHover: string
   backgroundColorActive: string
+  backgroundColorDisabled: string
   width?: string
   border?: string
   color?: string
@@ -36,10 +37,18 @@ export const Button = styled.button<ButtonProps>`
     background: ${({ backgroundColorHover }) => `var(${backgroundColorHover})`};
   }
   :active {
-    background: ${({ backgroundColorActive }) => `var(${backgroundColorActive})`};
+    background: ${({ backgroundColorActive }) =>
+      `var(${backgroundColorActive})`};
+  }
+  :disabled {
+    background: ${({ backgroundColorDisabled }) =>
+      `var(${backgroundColorDisabled})`};
   }
   span {
-    color: ${({ color = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})` }) => color};
+    color: ${({
+      disabled,
+      color = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})`,
+    }) => (disabled ? `var(${COLORS.NEW_SURFACE_ON_SURFACE_2})` : color)};
     :hover {
       color: ${({ colorHover = `var(${COLORS.NEW_SURFACE_ON_SURFACE_1})` }) =>
         colorHover};
@@ -53,4 +62,4 @@ export const Button = styled.button<ButtonProps>`
 
 export const SquareButton = styled(Button)`
   border-radius: 5px;
-`;
+`

@@ -1,10 +1,16 @@
-import { COLORS } from './../../../style_variables/COLORS';
+import { COLORS } from './../../../style_variables/COLORS'
 import { styled } from '@linaria/react'
+import { IRadioButtonProps } from './RadioButton'
 
-export const LabelSC = styled.label`
+export const LabelSC = styled.label<Omit<IRadioButtonProps, 'selectedValue'>>`
   font-family: 'Plus Jakarta Sans';
   font-size: 16px;
-  color: var(${COLORS.NEW_SURFACE_3});
+  color: ${({ invalid, disabled }) =>
+    disabled
+      ? `var(${COLORS.NEW_SURFACE_ON_SURFACE_2})`
+      : invalid
+      ? `var(${COLORS.ERROR})`
+      : `var(${COLORS.NEW_SURFACE_3})`};
 `
 
 export const InputSC = styled.input`

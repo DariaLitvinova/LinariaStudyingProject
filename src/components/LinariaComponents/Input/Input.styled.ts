@@ -11,8 +11,8 @@ export const InputSC = styled.input<IInputSC>`
   height: ${({ inputHeight }) => inputHeight || 'auto'};
   font-family: 'Plus Jakarta Sans';
   font-size: 16px;
-  color: ${({ disabled, colorDefault }) =>
-    disabled ? 'inherit' : `var(${colorDefault})`};
+  color: ${({ disabled, colorDefault, placeholderColor }) =>
+    disabled ? `var(${placeholderColor})` : `var(${colorDefault})`};
   border: ${({ borders }) =>
     borders ? `${borders} solid transparent` : 'initial'};
   border-width: ${({ borders }) => borders || 'initial'};

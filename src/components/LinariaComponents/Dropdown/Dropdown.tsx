@@ -23,7 +23,6 @@ export interface IDropdownProps {
   corners?: string
   label?: string
   height?: string
-  required?: boolean
   borders?: string
   borderColorDefault?: string
   borderColorInvalid?: string
@@ -33,6 +32,8 @@ export interface IDropdownProps {
   className?: string
   style?: CSSProperties
   invalid?: boolean
+  errorText?: string
+  disabled?: boolean
 }
 
 export const Dropdown = ({
@@ -43,7 +44,6 @@ export const Dropdown = ({
   placeholderColor = COLORS.NEW_SURFACE_ON_SURFACE_2,
   label = '',
   colorDefault = COLORS.NEW_SURFACE_5,
-  required = true,
   height = 'auto',
   borders = '1px',
   corners = '3px',
@@ -52,12 +52,21 @@ export const Dropdown = ({
   borderColorInvalid = COLORS.ERROR,
   children,
   onChange,
+  errorText,
+  disabled,
 }: IDropdownProps): JSX.Element => {
   return (
     <Block justify='center' gap={2}>
-      <Typography size={12} color={COLORS.NEW_SURFACE_5}>
-        {label}
-      </Typography>
+       <Block orientation='horizontal' justify='space-between'>
+        <Typography size={12} color={COLORS.NEW_SURFACE_5}>
+          {label}
+        </Typography>
+        {errorText && (
+          <Typography size={12} color={COLORS.ERROR}>
+            {errorText}
+          </Typography>
+        )}
+      </Block>
       <DropdownSC
         name={name}
         id={id}
@@ -68,9 +77,9 @@ export const Dropdown = ({
         colorDefault={colorDefault}
         inputHeight={height}
         corners={corners}
-        required={required}
         invalid={invalid}
         borders={borders}
+        disabled={disabled}
         onChange={onChange}
       >
         {placeholder && (

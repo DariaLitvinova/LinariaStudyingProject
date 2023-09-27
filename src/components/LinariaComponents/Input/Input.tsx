@@ -23,18 +23,17 @@ export interface IInputProps {
   corners?: string
   label?: string
   height?: string
-  required?: boolean
   borders?: string
   borderColorDefault?: string
   borderColorInvalid?: string
   autoComplete?: string
   autoFocus?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void
   className?: string
   style?: CSSProperties
   invalid?: boolean
+  errorText?: string
+  disabled?: boolean
 }
 
 export const Input = ({
@@ -44,7 +43,6 @@ export const Input = ({
   placeholderColor = COLORS.NEW_SURFACE_ON_SURFACE_2,
   label = '',
   colorDefault = COLORS.NEW_SURFACE_5,
-  required = true,
   height = 'auto',
   borders = '1px',
   corners = '3px',
@@ -52,22 +50,25 @@ export const Input = ({
   autoComplete,
   borderColorDefault = COLORS.NEW_OUTLINE_BORDER,
   borderColorInvalid = COLORS.ERROR,
+  errorText,
+  onChange,
+  disabled,
 }: IInputProps): JSX.Element => {
   return (
     <Block justify='center' gap={2}>
-      <Typography size={12} color={COLORS.NEW_SURFACE_5}>
-        {label}
-      </Typography>
+      <Block orientation='horizontal' justify='space-between'>
+        <Typography size={12} color={COLORS.NEW_SURFACE_5}>
+          {label}
+        </Typography>
+        {errorText && (
+          <Typography size={12} color={COLORS.ERROR}>
+            {errorText}
+          </Typography>
+        )}
+      </Block>
       <InputSC
         type={type}
         name={name}
-        // pattern={pattern}
-        // value={value}
-        // defaultValue={defaultValue}
-        // min={min}
-        // max={max}
-        // minLength={minLength}
-        // maxLength={maxLength}
         autoComplete={autoComplete}
         placeholder={placeholder}
         placeholderColor={placeholderColor}
@@ -76,9 +77,10 @@ export const Input = ({
         colorDefault={colorDefault}
         inputHeight={height}
         corners={corners}
-        required={required}
         invalid={invalid}
         borders={borders}
+        disabled={disabled}
+        onChange={onChange}
       />
     </Block>
   )

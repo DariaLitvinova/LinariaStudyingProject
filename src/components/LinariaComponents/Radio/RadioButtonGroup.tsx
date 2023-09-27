@@ -17,35 +17,44 @@ export interface IRadioButtonGroupProps {
   maxHeight?: number
   className?: string
   title?: string
+  errorText?: string
 }
 
 export const RadioButtonGroup = ({
   children,
   width,
-  gap = 30,
+  gap = 5,
   radioGap = 20,
   wrap,
-  orientation = Orientation.Row,
+  orientation = Orientation.Column,
   radioOrientation = Orientation.Row,
   justifyContent = JustifyContent.SpaceBetween,
   padding = '10px',
   title = '',
+  errorText,
 }: IRadioButtonGroupProps): JSX.Element => (
   <Block
     width={width}
     orientation={orientation}
     justify={justifyContent}
     gap={gap}
-    align='center'
     padding={padding}
     wrap={wrap}
   >
-    {title && (
-      <Typography size={12} color={COLORS.NEW_SURFACE_5}>
-        {title}
-      </Typography>
-    )}
-    <Block width='auto' orientation={radioOrientation} gap={radioGap}>
+    <Block orientation='horizontal' justify='space-between'>
+      {title && (
+        <Typography size={12} color={COLORS.NEW_SURFACE_5}>
+          {title}
+        </Typography>
+      )}
+      {errorText && (
+        <Typography size={12} color={COLORS.ERROR}>
+          {errorText}
+        </Typography>
+      )}
+    </Block>
+
+    <Block width='auto' justify='end' orientation={radioOrientation} gap={radioGap}>
       {children}
     </Block>
   </Block>

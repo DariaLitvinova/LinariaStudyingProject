@@ -1,5 +1,6 @@
 import { COLORS } from '../../../style_variables/COLORS'
 import { Block } from '../Block'
+import { Typography } from '../Typography'
 import { FileInputUploadSC, LabelFileSC } from './FileInputUpload.styled'
 
 export interface IFileInputUploadProps {
@@ -13,29 +14,36 @@ export interface IFileInputUploadProps {
   borderColorDefault?: string
   borderColorInvalid?: string
   invalid?: boolean
+  errorText?: string
+  disabled?: boolean
 }
 
 export const FileInputUpload = ({
   id = '',
   name = '',
   title = '',
-  required,
   borders = '1px',
   invalid,
   borderColorDefault = COLORS.NEW_OUTLINE_BORDER,
   borderColorInvalid = COLORS.ERROR,
-  value ='',
+  value = '',
+  onChange,
+  errorText,
+  disabled,
 }: IFileInputUploadProps): JSX.Element => {
   return (
-    <Block orientation='horizontal' align='center' gap={5}>
-      <FileInputUploadSC
-        type='file'
-        id={id}
-        required={required}
-        accept='.png, .jpg, .jpeg'
-        name={name}
-        // onChange={onChange}
-      />
+    <Block align='center' gap={5}>
+      <Block orientation='horizontal' justify='space-between'>
+        {errorText && (
+          <Typography
+            size={12}
+            color={COLORS.ERROR}
+            style={{ width: '100%', textAlign: 'right' }}
+          >
+            {errorText}
+          </Typography>
+        )}
+      </Block>
       <LabelFileSC
         htmlFor={id}
         borders={borders}
@@ -43,8 +51,17 @@ export const FileInputUpload = ({
         borderColorDefault={borderColorDefault}
         borderColorInvalid={borderColorInvalid}
         value={value}
+        disabled={disabled}
       >
         {title}
+        <FileInputUploadSC
+          type='file'
+          id={id}
+          accept='.png, .jpg, .jpeg'
+          name={name}
+          disabled={disabled}
+          onChange={onChange}
+        />
       </LabelFileSC>
     </Block>
   )

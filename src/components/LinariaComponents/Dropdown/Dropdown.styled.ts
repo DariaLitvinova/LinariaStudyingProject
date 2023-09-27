@@ -11,8 +11,8 @@ export const DropdownSC = styled.select<IDropdownSC>`
   height: ${({ inputHeight }) => inputHeight || 'auto'};
   font-family: 'Plus Jakarta Sans';
   font-size: 16px;
-  color: ${({ value, colorDefault, placeholderColor }) =>
-    value ? `var(${colorDefault})` : `var(${placeholderColor})`};
+  color: ${({ value, colorDefault, placeholderColor, disabled }) =>
+    value && !disabled ? `var(${colorDefault})` : `var(${placeholderColor})`};
   border: ${({ borders }) =>
     borders ? `var(${borders}) solid transparent` : 'initial'};
   border-width: ${({ borders }) => borders || 'initial'};

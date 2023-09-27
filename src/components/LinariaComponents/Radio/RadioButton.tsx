@@ -8,12 +8,20 @@ export interface IRadioButtonProps {
   title?: string
   required?: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  selectedValue: string
+  invalid?: boolean
+  disabled?: boolean
 }
 
 export const RadioButton = ({
   id = '',
   name = '',
   title = '',
+  value,
+  onChange,
+  selectedValue,
+  invalid,
+  disabled,
 }: IRadioButtonProps): JSX.Element => {
   return (
     <Block orientation='horizontal' align='center' gap={5}>
@@ -21,13 +29,14 @@ export const RadioButton = ({
         type='radio'
         id={id}
         name={name}
-        // value={value}
-        // checked={checked ?? value === selectedValue}
-        // defaultChecked={defaultChecked}
-        // disabled={disabled}
-        // onChange={onChange}
+        value={value}
+        checked={value === selectedValue}
+        disabled={disabled}
+        onChange={onChange}
       />
-      <LabelSC htmlFor={id}>{title}</LabelSC>
+      <LabelSC invalid={invalid} htmlFor={id}>
+        {title}
+      </LabelSC>
     </Block>
   )
 }

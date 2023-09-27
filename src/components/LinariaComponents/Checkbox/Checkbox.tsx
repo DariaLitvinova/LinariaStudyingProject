@@ -1,6 +1,9 @@
-import { Block } from "../Block"
-import { LabelSC } from "../Radio/Label.styled"
-import { CheckboxSC } from "./Checkbox.styled"
+import { CSSProperties } from '@linaria/core'
+import { COLORS } from '../../../style_variables/COLORS'
+import { Block } from '../Block'
+import { LabelSC } from '../Radio/Label.styled'
+import { Typography } from '../Typography'
+import { CheckboxSC } from './Checkbox.styled'
 
 export interface ICheckboxProps {
   id?: string
@@ -8,30 +11,46 @@ export interface ICheckboxProps {
   value?: string
   title?: string
   required?: boolean
-  checked: boolean
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  invalid?: boolean
+  errorText?: string
+  style?: CSSProperties
+  disabled?: boolean
 }
 
 export const Checkbox = ({
   id = '',
   name = '',
   title = '',
-  checked,
+  invalid,
+  onChange,
+  errorText,
+  style,
+  disabled,
 }: ICheckboxProps): JSX.Element => {
   return (
-    <Block orientation='horizontal' align='center' gap={15}>
-      <CheckboxSC
-        type='checkbox'
-        id={id}
-        name={name}
-        checked={checked}
-        // value={value}
-        // checked={checked ?? value === selectedValue}
-        // defaultChecked={defaultChecked}
-        // disabled={disabled}
-        // onChange={onChange}
-      />
-      <LabelSC htmlFor={id}>{title}</LabelSC>
+    <Block>
+      {errorText && (
+        <Typography
+          size={12}
+          color={COLORS.ERROR}
+          style={{ width: '100%', textAlign: 'right' }}
+        >
+          {errorText}
+        </Typography>
+      )}
+      <Block orientation='horizontal' align='center' gap={15}>
+        <CheckboxSC
+          disabled={disabled}
+          type='checkbox'
+          id={id}
+          name={name}
+          onChange={onChange}
+        />
+        <LabelSC disabled={disabled} invalid={invalid} htmlFor={id}>
+          {title}
+        </LabelSC>
+      </Block>
     </Block>
   )
 }

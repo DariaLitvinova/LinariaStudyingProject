@@ -3,18 +3,17 @@ import { COLORS } from '../../../style_variables/COLORS'
 import { IFileInputUploadProps } from './FileInputUpload'
 
 export const FileInputUploadSC = styled.input`
-  display: none;
+  margin-top: 10px;
 `
 
 export const LabelFileSC = styled.label<IFileInputUploadProps>`
   font: 'Plus Jakarta Sans';
   font-size: 16px;
-  color: ${({ value }) =>
-    value
+  color: ${({ value, disabled }) =>
+    value && !disabled
       ? `var(${COLORS.NEW_SURFACE_3})`
       : `var(${COLORS.NEW_SURFACE_ON_SURFACE_2})`};
   cursor: pointer;
-  width: 100%;
   padding: 14px 10.5px;
   border-radius: 3px;
   border: ${({ borders }) =>
