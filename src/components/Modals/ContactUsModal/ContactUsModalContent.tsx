@@ -1,22 +1,22 @@
-import PrimarySquareButton from '../Buttons/PrimarySquareButton'
-import { Block } from '../LinariaComponents/Block'
-import { Input } from '../LinariaComponents/Input/Input'
+import PrimarySquareButton from '../../Buttons/PrimarySquareButton'
+import { Block } from '../../LinariaComponents/Block'
+import { Input } from '../../LinariaComponents/Input/Input'
 import { useStore } from 'effector-react'
-import { RadioButtonGroup } from '../LinariaComponents/Radio/RadioButtonGroup'
-import { RadioButton } from '../LinariaComponents/Radio/RadioButton'
-import { COUNTRIES } from '../../constants/constants'
-import { Dropdown } from '../LinariaComponents/Dropdown/Dropdown'
-import { DropdownItem } from '../LinariaComponents/Dropdown/DropdownItem'
-import { Checkbox } from '../LinariaComponents/Checkbox/Checkbox'
-import { FileInputUpload } from '../LinariaComponents/FileInputUpload/FileInputUpload'
-import { COLORS } from '../../style_variables/COLORS'
+import { RadioButtonGroup } from '../../LinariaComponents/Radio/RadioButtonGroup'
+import { RadioButton } from '../../LinariaComponents/Radio/RadioButton'
+import { COUNTRIES } from '../../../constants/constants'
+import { Dropdown } from '../../LinariaComponents/Dropdown/Dropdown'
+import { DropdownItem } from '../../LinariaComponents/Dropdown/DropdownItem'
+import { Checkbox } from '../../LinariaComponents/Checkbox/Checkbox'
+import { FileInputUpload } from '../../LinariaComponents/FileInputUpload/FileInputUpload'
+import { COLORS } from '../../../style_variables/COLORS'
 import { useForm } from 'effector-forms'
-import { Loader } from '../LinariaComponents/Loader/Loader'
-import { submitFormFx, userForm } from '../../store/userForm/model'
-import { Typography } from '../LinariaComponents/Typography'
-import { $errorResponse } from '../../store/errorStore'
+import { Loader } from '../../LinariaComponents/Loader/Loader'
+import { submitFormFx, userForm } from '../../../store/userForm/model'
+import { Typography } from '../../LinariaComponents/Typography'
+import { $errorResponse } from '../../../store/errorStore'
 
-const ModalContent = () => {
+const ContactUsModalContent = () => {
   const { fields } = useForm(userForm)
   const pending = useStore(submitFormFx.pending)
 
@@ -157,4 +157,4 @@ const ModalContent = () => {
   )
 }
 
-export default ModalContent
+export default ContactUsModalContent
