@@ -8,11 +8,9 @@ import MovieTitleSection from './BannerContent/MovieTitleSection'
 import { ModalForm } from '../LinariaComponents/ModalForm/ModalForm'
 import { LayerModalFixed } from '../LinariaComponents/LayerModal/LayerModalFixed'
 import {
-  $modalStore,
-  closeModalForm,
+  $isSuccessModal,
   closeModalSuccess,
-  openModalForm,
-} from '../../store/store'
+} from '../../store/successModalStore'
 import { useStore } from 'effector-react'
 import { SyntheticEvent, useEffect } from 'react'
 import { useForm } from 'effector-forms'
@@ -20,9 +18,12 @@ import ModalContent from './ModalContent'
 import { Typography } from '../LinariaComponents/Typography'
 import { COLORS } from '../../style_variables/COLORS'
 import { userForm } from '../../store/userForm/model'
+import { $modalStore, closeModalForm, openModalForm } from '../../store/modalStore'
 
 const BannerContent = () => {
-  const { isOpenModal, isSuccess } = useStore($modalStore)
+  const { isOpenModal } = useStore($modalStore)
+
+  const isSuccess = useStore($isSuccessModal)
 
   useEffect(() => {
     if (isSuccess) {

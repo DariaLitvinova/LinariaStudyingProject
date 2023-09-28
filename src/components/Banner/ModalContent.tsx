@@ -13,13 +13,30 @@ import { COLORS } from '../../style_variables/COLORS'
 import { useForm } from 'effector-forms'
 import { Loader } from '../LinariaComponents/Loader/Loader'
 import { submitFormFx, userForm } from '../../store/userForm/model'
+import { Typography } from '../LinariaComponents/Typography'
+import { $errorResponse } from '../../store/errorStore'
 
 const ModalContent = () => {
   const { fields } = useForm(userForm)
   const pending = useStore(submitFormFx.pending)
 
+  const isErrorResponse = useStore($errorResponse)
+
   return (
     <>
+      {isErrorResponse && (
+        <Typography
+          color={COLORS.ERROR}
+          size={12}
+          style={{
+            border: `1px solid var(${COLORS.ERROR})`,
+            padding: '10px',
+            borderRadius: '5px',
+          }}
+        >
+          {isErrorResponse}
+        </Typography>
+      )}
       <Input
         name='name'
         type='text'

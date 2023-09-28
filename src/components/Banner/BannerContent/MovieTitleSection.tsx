@@ -23,9 +23,9 @@ const MovieTitleSection = () => {
           {MOVIE_TITLE}
         </Headline>
 
-        <HeadlineFav style={{ fontSize: '40px', fontStyle: 'italic' }}>
+        {/* <HeadlineFav style={{ fontSize: '40px', fontStyle: 'italic' }}>
           {MOVIE_TITLE}
-        </HeadlineFav>
+        </HeadlineFav> */}
       </Block>
 
       <Typography
