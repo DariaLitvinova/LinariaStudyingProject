@@ -4,7 +4,7 @@ import { Input } from '../../LinariaComponents/Input/Input'
 import { useStore } from 'effector-react'
 import { RadioButtonGroup } from '../../LinariaComponents/Radio/RadioButtonGroup'
 import { RadioButton } from '../../LinariaComponents/Radio/RadioButton'
-import { COUNTRIES } from '../../../constants/constants'
+import { COUNTRIES, GENDER_RADIO_VALUES } from '../../../constants/constants'
 import { Dropdown } from '../../LinariaComponents/Dropdown/Dropdown'
 import { DropdownItem } from '../../LinariaComponents/Dropdown/DropdownItem'
 import { Checkbox } from '../../LinariaComponents/Checkbox/Checkbox'
@@ -93,27 +93,23 @@ const ContactUsModalContent = () => {
       </Dropdown>
 
       <RadioButtonGroup title='Gender' errorText={fields.gender.errorText()}>
-        <RadioButton
-          id='man'
-          name='gender'
-          title='Man'
-          value='man'
-          disabled={pending}
-          invalid={fields.gender.hasError()}
-          selectedValue={fields.gender.value}
-          onChange={(e) => fields.gender.onChange(e.target.value)}
-        />
-        <RadioButton
-          id='woman'
-          name='gender'
-          title='Woman'
-          value='woman'
-          disabled={pending}
-          invalid={fields.gender.hasError()}
-          selectedValue={fields.gender.value}
-          onChange={(e) => fields.gender.onChange(e.target.value)}
-        />
+      {GENDER_RADIO_VALUES.map(({ id, value, label }) => {
+          return (
+            <RadioButton
+              key={id}
+              id={value}
+              name='gender'
+              title={label}
+              value={value}
+              disabled={pending}
+              invalid={fields.gender.hasError()}
+              selectedValue={fields.gender.value}
+              onChange={(e) => fields.gender.onChange(e.target.value)}
+            />
+          )
+        })}
       </RadioButtonGroup>
+      
       <FileInputUpload
         id='photo'
         name='photo'

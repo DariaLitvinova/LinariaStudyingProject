@@ -43,3 +43,8 @@ export const MOVIE_LABELS = [
 export const BTN_TEXT_SQUARE = 'Just for a test'
 
 export const COUNTRIES = ['France', 'Italy', 'Spain']
+
+export const GENDER_RADIO_VALUES = [
+  { id: 0, value: 'man', label: 'Man' },
+  { id: 1, value: 'woman', label: 'Woman' },
+]

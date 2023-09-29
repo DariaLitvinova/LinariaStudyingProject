@@ -3,17 +3,21 @@ import { Block } from '../../LinariaComponents/Block'
 import { useStore } from 'effector-react'
 import { RadioButtonGroup } from '../../LinariaComponents/Radio/RadioButtonGroup'
 import { RadioButton } from '../../LinariaComponents/Radio/RadioButton'
-import { COUNTRIES } from '../../../constants/constants'
+import { COUNTRIES, GENDER_RADIO_VALUES } from '../../../constants/constants'
 import { Dropdown } from '../../LinariaComponents/Dropdown/Dropdown'
 import { DropdownItem } from '../../LinariaComponents/Dropdown/DropdownItem'
 import { Checkbox } from '../../LinariaComponents/Checkbox/Checkbox'
 import { COLORS } from '../../../style_variables/COLORS'
 import { Loader } from '../../LinariaComponents/Loader/Loader'
-import { $form, sendFormFx, setField } from '../../../store/loginForm/loginFormStore'
+import {
+  $signInForm,
+  sendFormFx,
+  setField,
+} from '../../../store/loginForm/loginFormStore'
 import { Field } from '../../Field/Field'
 
 const SignInModalContent = () => {
-  const { country, gender, errors} = useStore($form) 
+  const { country, gender, errors } = useStore($signInForm)
   const pendingSignIn = useStore(sendFormFx.pending)
 
   const handleChangeCountry = setField.prepend((value: string) => ({
@@ -57,26 +61,21 @@ const SignInModalContent = () => {
       </Dropdown>
 
       <RadioButtonGroup title='Gender' errorText={errors.gender}>
-        <RadioButton
-          id='man'
-          name='gender'
-          title='Man'
-          value='man'
-          disabled={pendingSignIn}
-          invalid={!!errors.gender}
-          selectedValue={gender}
-          onChange={(e) => handleChangeGender(e.target.value)}
-        />
-        <RadioButton
-          id='woman'
-          name='gender'
-          title='Woman'
-          value='woman'
-          disabled={pendingSignIn}
-          invalid={!!errors.gender}
-          selectedValue={gender}
-          onChange={(e) => handleChangeGender(e.target.value)}
-        />
+        {GENDER_RADIO_VALUES.map(({ id, value, label }) => {
+          return (
+            <RadioButton
+              key={id}
+              id={value}
+              name='gender'
+              title={label}
+              value={value}
+              disabled={pendingSignIn}
+              invalid={!!errors.gender}
+              selectedValue={gender}
+              onChange={(e) => handleChangeGender(e.target.value)}
+            />
+          )
+        })}
       </RadioButtonGroup>
 
       <Block
@@ -97,7 +96,7 @@ const SignInModalContent = () => {
         height='1px'
         bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2}
         margin='10px 0'
-      /> 
+      />
 
       <PrimarySquareButton
         style={{ minWidth: '150px' }}
@@ -108,7 +107,6 @@ const SignInModalContent = () => {
         {pendingSignIn ? <Loader /> : null}
       </PrimarySquareButton>
     </>
-
   )
 }
 

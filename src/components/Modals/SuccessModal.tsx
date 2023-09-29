@@ -4,11 +4,11 @@ import { Typography } from '../LinariaComponents/Typography'
 import { COLORS } from '../../style_variables/COLORS'
 import { userForm } from '../../store/userForm/model'
 import { useStore } from 'effector-react'
-import { $form } from '../../store/loginForm/loginFormStore'
+import { $signInForm } from '../../store/loginForm/loginFormStore'
 
 const SuccessModal = () => {
   const { fields } = useForm(userForm)
-  const { login } = useStore($form)
+  const { login } = useStore($signInForm)
 
   const name = fields.name.value;
 
