@@ -5,10 +5,13 @@ import { SyntheticEvent } from 'react'
 import { useForm } from 'effector-forms'
 import ContactUsModalContent from './ContactUsModalContent'
 import { userForm } from '../../../store/userForm/model'
-import { $modalStore, closeModalForm } from '../../../store/modalStore'
+import {
+  $userModalStore,
+  closeUserModalForm,
+} from '../../../store/userFormModalStore'
 
 const ContactUsModal = () => {
-  const { isOpenModal } = useStore($modalStore)
+  const { isOpenModal } = useStore($userModalStore)
 
   const { submit } = useForm(userForm)
 
@@ -20,7 +23,7 @@ const ContactUsModal = () => {
   return (
     <LayerModalFixed
       isOpened={isOpenModal}
-      onClickForCloseModal={closeModalForm}
+      onClickForCloseModal={closeUserModalForm}
     >
       <ModalForm width='363px' height='auto' onSubmit={onSubmit}>
         <ContactUsModalContent />

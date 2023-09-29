@@ -14,7 +14,7 @@ import { useForm } from 'effector-forms'
 import { Loader } from '../../LinariaComponents/Loader/Loader'
 import { submitFormFx, userForm } from '../../../store/userForm/model'
 import { Typography } from '../../LinariaComponents/Typography'
-import { $errorResponse } from '../../../store/errorStore'
+import { $errorResponse } from '../../../store/errorResponseStore'
 
 const ContactUsModalContent = () => {
   const { fields } = useForm(userForm)
@@ -75,7 +75,7 @@ const ContactUsModalContent = () => {
       />
       <Dropdown
         name='country'
-        label='Select your country'
+        label='Country'
         value={fields.country.value}
         disabled={pending}
         invalid={fields.country.hasError()}
@@ -93,7 +93,7 @@ const ContactUsModalContent = () => {
       </Dropdown>
 
       <RadioButtonGroup title='Gender' errorText={fields.gender.errorText()}>
-      {GENDER_RADIO_VALUES.map(({ id, value, label }) => {
+        {GENDER_RADIO_VALUES.map(({ id, value, label }) => {
           return (
             <RadioButton
               key={id}
@@ -109,7 +109,7 @@ const ContactUsModalContent = () => {
           )
         })}
       </RadioButtonGroup>
-      
+
       <FileInputUpload
         id='photo'
         name='photo'

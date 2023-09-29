@@ -6,7 +6,6 @@ import {
 import MovieLabel from '../../Elements/MovieLabel'
 import { Block } from '../../LinariaComponents/Block'
 import { Headline } from '../../LinariaComponents/Headline'
-import { HeadlineFav } from '../../LinariaComponents/HeadlineFav'
 import { Typography } from '../../LinariaComponents/Typography'
 
 const MovieTitleSection = () => {
@@ -23,9 +22,6 @@ const MovieTitleSection = () => {
           {MOVIE_TITLE}
         </Headline>
 
-        {/* <HeadlineFav style={{ fontSize: '40px', fontStyle: 'italic' }}>
-          {MOVIE_TITLE}
-        </HeadlineFav> */}
       </Block>
 
       <Typography

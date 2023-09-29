@@ -1,7 +1,7 @@
 import { createEvent, createStore, sample } from "effector"
 import { submitFormFx, userForm } from "./userForm/model"
 
-type ModalStoreType = {
+type userModalStoreType = {
     isOpenModal: boolean
   }
   
@@ -9,14 +9,14 @@ type ModalStoreType = {
     isOpenModal: false,
   }
   
-  export const openModalForm = createEvent<boolean>()
-  export const closeModalForm = createEvent<boolean>()
+  export const openUserModalForm = createEvent<boolean>()
+  export const closeUserModalForm = createEvent<boolean>()
   
-  export const $modalStore = createStore<ModalStoreType>(initialModalState)
-    .on(openModalForm, (state) => {
+  export const $userModalStore = createStore<userModalStoreType>(initialModalState)
+    .on(openUserModalForm, (state) => {
       return { ...state, isOpenModal: true }
     })
-    .on(closeModalForm, (state) => {
+    .on(closeUserModalForm, (state) => {
       return { ...state, isOpenModal: false }
     })
     .on(submitFormFx.doneData, (state) => ({
@@ -25,6 +25,6 @@ type ModalStoreType = {
     }))
   
   sample({
-    clock: closeModalForm,
+    clock: closeUserModalForm,
     target: userForm.resetValues,
   })

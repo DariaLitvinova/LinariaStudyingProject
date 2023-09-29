@@ -11,26 +11,26 @@ import { COLORS } from '../../../style_variables/COLORS'
 import { Loader } from '../../LinariaComponents/Loader/Loader'
 import {
   $signInForm,
-  sendFormFx,
-  setField,
-} from '../../../store/loginForm/loginFormStore'
-import { Field } from '../../Field/Field'
+  sendSignInFormFx,
+  setSignInField,
+} from '../../../store/signInForm/model'
+import { Field } from './Field/Field'
 
 const SignInModalContent = () => {
   const { country, gender, errors } = useStore($signInForm)
-  const pendingSignIn = useStore(sendFormFx.pending)
+  const pendingSignIn = useStore(sendSignInFormFx.pending)
 
-  const handleChangeCountry = setField.prepend((value: string) => ({
+  const handleChangeCountry = setSignInField.prepend((value: string) => ({
     key: 'country',
     value,
   }))
 
-  const handleChangeGender = setField.prepend((value: string) => ({
+  const handleChangeGender = setSignInField.prepend((value: string) => ({
     key: 'gender',
     value,
   }))
 
-  const handleChangeConfirmation = setField.prepend((value: boolean) => ({
+  const handleChangeConfirmation = setSignInField.prepend((value: boolean) => ({
     key: 'confirmation',
     value,
   }))
@@ -43,7 +43,7 @@ const SignInModalContent = () => {
 
       <Dropdown
         name='country'
-        label='Select your country'
+        label='Country'
         value={country}
         disabled={pendingSignIn}
         invalid={!!errors.country}

@@ -23,9 +23,13 @@ export const CAST_INFORMATION = [
     },
   },
 ]
-export const BTN_TITLE_WATCH = 'Watch Now'
 
-export const BTN_TITLE_DETAILS = 'Details'
+export enum BTN_TITLES {
+  Watch = 'Watch Now',
+  Details = 'Details',
+  SignIn = 'Sign In',
+  ContactUs = 'Contact us',
+}
 
 export const MOVIE_TAGS = [
   { id: 0, tagText: 'Thriller' },
@@ -48,3 +52,20 @@ export const GENDER_RADIO_VALUES = [
   { id: 0, value: 'man', label: 'Man' },
   { id: 1, value: 'woman', label: 'Woman' },
 ]
+
+export const responseError = 'Error. Something went wrong.'
+
+export const MSG = {
+  THANKS_REQ: ', thanks for your request!',
+  SIGNED_AS: 'Signed in as ',
+}
+
+export enum ERROR_MSG {
+  Required = 'Required field',
+  PasswordMismatch = 'Please make sure your passwords match',
+  NotChecked = 'Should be checked',
+  NotEmail = `Doesn't match email format`,
+  NotPhone = `Doesn't match phone format`,
+  MinSymb = 'Should be at least 2 symbols',
+  MaxSymb = 'Should be not more than 20 symbols',
+}

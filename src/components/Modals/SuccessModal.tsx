@@ -4,7 +4,8 @@ import { Typography } from '../LinariaComponents/Typography'
 import { COLORS } from '../../style_variables/COLORS'
 import { userForm } from '../../store/userForm/model'
 import { useStore } from 'effector-react'
-import { $signInForm } from '../../store/loginForm/loginFormStore'
+import { $signInForm } from '../../store/signInForm/model'
+import { MSG } from '../../constants/constants'
 
 const SuccessModal = () => {
   const { fields } = useForm(userForm)
@@ -34,7 +35,7 @@ const SuccessModal = () => {
               border: `var(${COLORS.NEW_OUTLINE_BORDER}) 4px solid`,
             }}
           >
-            {name ? `${name}, thanks for your request!` : `Signed in as ${login}`}
+            {name ? `${name}${MSG.THANKS_REQ}` : `${MSG.SIGNED_AS}${login}`}
           </Typography>
         </Block>
   )

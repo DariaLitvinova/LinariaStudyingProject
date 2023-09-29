@@ -1,25 +1,24 @@
 import { useStore } from "effector-react"
-import { $loginModalStore, closeLoginModal } from "../../../store/loginModal"
 import { SyntheticEvent } from "react"
-import { submitted, validateForm } from "../../../store/loginForm/loginFormStore"
+import { submitSignIn } from "../../../store/signInForm/model"
 import { LayerModalFixed } from "../../LinariaComponents/LayerModal/LayerModalFixed"
 import { ModalForm } from "../../LinariaComponents/ModalForm/ModalForm"
 import SignInModalContent from "./SignInModalContent"
+import { $signInUserModalStore, closeSignInModal } from "../../../store/signInModalStore"
 
 const SignInModal = () => {
 
-    const { isOpenLoginModal } = useStore($loginModalStore)
+    const { isOpenSignInModal } = useStore($signInUserModalStore)
 
   const onLoginSubmit = (e: SyntheticEvent<Element, Event>) => {
     e.preventDefault()
-    validateForm()
-    // submitted()
+    submitSignIn()
   }
 
   return (
       <LayerModalFixed
-        isOpened={isOpenLoginModal}
-        onClickForCloseModal={closeLoginModal}
+        isOpened={isOpenSignInModal}
+        onClickForCloseModal={closeSignInModal}
       >
         <ModalForm width='463px' height='auto' onSubmit={onLoginSubmit}>
           <SignInModalContent />

@@ -1,28 +1,31 @@
 import PrimarySquareButton from '../Buttons/PrimarySquareButton'
 import { AbsoluteWrapper } from '../LinariaComponents/AbsoluteWrapper'
 import { Block } from '../LinariaComponents/Block'
-import AdditionalInfoSection from './BannerContent/AdditionalInfoSection'
-import ButtonsSection from './BannerContent/ButtonsSection'
-import CreatorSection from './BannerContent/CreatorSection'
-import MovieTitleSection from './BannerContent/MovieTitleSection'
+import AdditionalInfoSection from './BannerSections/AdditionalInfoSection'
+import ButtonsSection from './BannerSections/ButtonsSection'
+import CreatorSection from './BannerSections/CreatorSection'
+import MovieTitleSection from './BannerSections/MovieTitleSection'
+import { useStore } from 'effector-react'
+import { useEffect } from 'react'
+import SuccessModal from '../Modals/SuccessModal'
+import ContactUsModal from '../Modals/ContactUsModal/ContactUsModal'
+import SignInModal from '../Modals/SignInModal/SignInModal'
 import {
   $isSuccessModal,
   closeModalSuccess,
 } from '../../store/successModalStore'
-import { useStore } from 'effector-react'
-import { useEffect } from 'react'
-import { openModalForm } from '../../store/modalStore'
-import { openLoginModal } from '../../store/loginModal'
-import SuccessModal from '../Modals/SuccessModal'
-import ContactUsModal from '../Modals/ContactUsModal/ContactUsModal'
-import SignInModal from '../Modals/SignInModal/SignInModal'
+import { openUserModalForm } from '../../store/userFormModalStore'
+import { openSignInModal } from '../../store/signInModalStore'
+import { BTN_TITLES } from '../../constants/constants'
 
 const BannerContent = () => {
   const isSuccess = useStore($isSuccessModal)
 
   useEffect(() => {
     if (isSuccess) {
-      setTimeout(closeModalSuccess, 5000)
+      setTimeout(() => {
+        closeModalSuccess()
+      }, 5000)
     }
   }, [isSuccess])
 
@@ -34,8 +37,14 @@ const BannerContent = () => {
         top='20px'
         right='20px'
       >
-        <PrimarySquareButton text='Contact us' onClick={openModalForm} />
-        <PrimarySquareButton text='Sign In' onClick={openLoginModal} />
+        <PrimarySquareButton
+          text={BTN_TITLES.ContactUs}
+          onClick={openUserModalForm}
+        />
+        <PrimarySquareButton
+          text={BTN_TITLES.SignIn}
+          onClick={openSignInModal}
+        />
       </AbsoluteWrapper>
 
       <CreatorSection />
