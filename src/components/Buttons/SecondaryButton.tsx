@@ -18,6 +18,7 @@ const SecondaryButton = ({ children, text }: SecondaryButtonProps) => {
       backgroundColor={COLORS.NEW_SURFACE_OPACITY_3}
       backgroundColorHover={COLORS.NEW_SURFACE_3}
       backgroundColorActive={COLORS.NEW_SURFACE_OPACITY_2}
+      backgroundColorDisabled={COLORS.NEW_SURFACE_3}
     >
       {children}
       <ButtonText lineHeight='24px' weight='700'>

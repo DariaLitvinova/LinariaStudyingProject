@@ -17,6 +17,7 @@ const PrimaryButton = ({ children, text }: PrimaryButtonProps) => {
       backgroundColor={COLORS.NEW_PRIMARY_GRADIENT}
       backgroundColorHover={COLORS.NEW_PRIMARY_GRADIENT_HOVER}
       backgroundColorActive={COLORS.NEW_PRIMARY_GRADIENT_PRESSED}
+      backgroundColorDisabled={COLORS.NEW_SURFACE_3}
     >
       {children}
       <ButtonText lineHeight='24px' weight='700'>

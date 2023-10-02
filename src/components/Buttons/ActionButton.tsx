@@ -21,6 +21,7 @@ const ActionButton = ({
       backgroundColorHover={COLORS.NEW_SURFACE_3}
       backgroundColorActive={COLORS.NEW_SURFACE_OPACITY_2}
       onClick={() => setIsActive(!isActive)}
+      backgroundColorDisabled={COLORS.NEW_SURFACE_3}
     >
       {children}
     </Button>
