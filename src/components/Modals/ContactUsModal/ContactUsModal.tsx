@@ -1,5 +1,5 @@
-import { ModalForm } from '../../LinariaComponents/ModalForm/ModalForm'
-import { LayerModalFixed } from '../../LinariaComponents/LayerModal/LayerModalFixed'
+import { ModalForm } from '../../ModalForm/ModalForm'
+import { LayerModalFixed } from '../../LayerModal/LayerModalFixed'
 import { useStore } from 'effector-react'
 import { SyntheticEvent } from 'react'
 import { useForm } from 'effector-forms'

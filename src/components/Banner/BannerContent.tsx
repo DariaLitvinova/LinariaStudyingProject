@@ -1,13 +1,12 @@
 import PrimarySquareButton from '../Buttons/PrimarySquareButton'
-import { AbsoluteWrapper } from '../LinariaComponents/AbsoluteWrapper'
-import { Block } from '../LinariaComponents/Block'
+import { WrapperSC } from '../Wrapper/Wrapper.styled'
 import AdditionalInfoSection from './BannerSections/AdditionalInfoSection'
 import ButtonsSection from './BannerSections/ButtonsSection'
 import CreatorSection from './BannerSections/CreatorSection'
 import MovieTitleSection from './BannerSections/MovieTitleSection'
 import { useStore } from 'effector-react'
 import { useEffect } from 'react'
-import SuccessModal from '../Modals/SuccessModal'
+import SuccessModal from '../Modals/SuccessModal/SuccessModal'
 import ContactUsModal from '../Modals/ContactUsModal/ContactUsModal'
 import SignInModal from '../Modals/SignInModal/SignInModal'
 import {
@@ -17,6 +16,12 @@ import {
 import { openUserModalForm } from '../../store/userFormModalStore'
 import { openSignInModal } from '../../store/signInModalStore'
 import { BTN_TITLES } from '../../constants/constants'
+import { AbsoluteWrapperSC } from '../Wrapper/AbsoluteWrapper.styled'
+import {
+  AlignItems,
+  JustifyContent,
+  Orientation,
+} from '../../style_variables/CSS_PROPERTIES'
 
 const BannerContent = () => {
   const isSuccess = useStore($isSuccessModal)
@@ -30,10 +35,15 @@ const BannerContent = () => {
   }, [isSuccess])
 
   return (
-    <Block gap={52} width='817px' justify='flex-end' align='flex-start'>
-      <AbsoluteWrapper
-        orientation='horizontal'
-        gap={10}
+    <WrapperSC
+      gap='52px'
+      width='817px'
+      justify={JustifyContent.FlexEnd}
+      align={AlignItems.FlexStart}
+    >
+      <AbsoluteWrapperSC
+        orientation={Orientation.Row}
+        gap='10px'
         top='20px'
         right='20px'
       >
@@ -45,7 +55,7 @@ const BannerContent = () => {
           text={BTN_TITLES.SignIn}
           onClick={openSignInModal}
         />
-      </AbsoluteWrapper>
+      </AbsoluteWrapperSC>
 
       <CreatorSection />
       <MovieTitleSection />
@@ -56,7 +66,7 @@ const BannerContent = () => {
 
       <ContactUsModal />
       <SignInModal />
-    </Block>
+    </WrapperSC>
   )
 }
 

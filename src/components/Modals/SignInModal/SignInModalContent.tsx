@@ -1,14 +1,18 @@
 import PrimarySquareButton from '../../Buttons/PrimarySquareButton'
-import { Block } from '../../LinariaComponents/Block'
+import { WrapperSC } from '../../Wrapper/Wrapper.styled'
 import { useStore } from 'effector-react'
-import { RadioButtonGroup } from '../../LinariaComponents/Radio/RadioButtonGroup'
-import { RadioButton } from '../../LinariaComponents/Radio/RadioButton'
-import { COUNTRIES, GENDER_RADIO_VALUES } from '../../../constants/constants'
-import { Dropdown } from '../../LinariaComponents/Dropdown/Dropdown'
-import { DropdownItem } from '../../LinariaComponents/Dropdown/DropdownItem'
-import { Checkbox } from '../../LinariaComponents/Checkbox/Checkbox'
+import { RadioButtonGroup } from '../../Radio/RadioButtonGroup'
+import { RadioButton } from '../../Radio/RadioButton'
+import {
+  BTN_TITLES,
+  COUNTRIES,
+  GENDER_RADIO_VALUES,
+} from '../../../constants/constants'
+import { Dropdown } from '../../Dropdown/Dropdown'
+import { DropdownItem } from '../../Dropdown/DropdownItem'
+import { Checkbox } from '../../Checkbox/Checkbox'
 import { COLORS } from '../../../style_variables/COLORS'
-import { Loader } from '../../LinariaComponents/Loader/Loader'
+import { LoaderSC } from '../../Loader/Loader.styled'
 import {
   $signInForm,
   sendSignInFormFx,
@@ -78,7 +82,7 @@ const SignInModalContent = () => {
         })}
       </RadioButtonGroup>
 
-      <Block
+      <WrapperSC
         height='1px'
         bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2}
         margin='10px 0'
@@ -92,19 +96,18 @@ const SignInModalContent = () => {
         errorText={errors.confirmation}
         onChange={(e) => handleChangeConfirmation(e.target.checked)}
       />
-      <Block
+      <WrapperSC
         height='1px'
         bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2}
         margin='10px 0'
       />
 
       <PrimarySquareButton
-        style={{ minWidth: '150px' }}
         disabled={pendingSignIn}
-        text={'Sign in'}
+        text={BTN_TITLES.SignIn}
         type='submit'
       >
-        {pendingSignIn ? <Loader /> : null}
+        {pendingSignIn ? <LoaderSC /> : null}
       </PrimarySquareButton>
     </>
   )

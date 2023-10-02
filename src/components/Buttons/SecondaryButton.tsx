@@ -1,19 +1,17 @@
 import { COLORS } from '../../style_variables/COLORS'
-import { Button } from '../LinariaComponents/Button'
-import { ButtonText } from '../LinariaComponents/ButtonText'
-import { Icon } from '../LinariaComponents/Icon'
+import { ButtonSC } from './Button.styled'
+import { ButtonText } from './ButtonText'
 
-interface SecondaryButtonProps {
+interface ISecondaryButtonProps {
   children?: JSX.Element
   text: string
 }
 
-const SecondaryButton = ({ children, text }: SecondaryButtonProps) => {
+const SecondaryButton = ({ children, text }: ISecondaryButtonProps) => {
   return (
-    <Button
-      display='inline-flex'
-      gap={8}
-      height={52}
+    <ButtonSC
+      gap='8px'
+      height='52px'
       padding='0px 24px'
       backgroundColor={COLORS.NEW_SURFACE_OPACITY_3}
       backgroundColorHover={COLORS.NEW_SURFACE_3}
@@ -24,7 +22,7 @@ const SecondaryButton = ({ children, text }: SecondaryButtonProps) => {
       <ButtonText lineHeight='24px' weight='700'>
         {text}
       </ButtonText>
-    </Button>
+    </ButtonSC>
   )
 }
 

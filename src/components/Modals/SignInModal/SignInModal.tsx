@@ -1,8 +1,8 @@
 import { useStore } from "effector-react"
 import { SyntheticEvent } from "react"
 import { submitSignIn } from "../../../store/signInForm/model"
-import { LayerModalFixed } from "../../LinariaComponents/LayerModal/LayerModalFixed"
-import { ModalForm } from "../../LinariaComponents/ModalForm/ModalForm"
+import { LayerModalFixed } from "../../LayerModal/LayerModalFixed"
+import { ModalForm } from "../../ModalForm/ModalForm"
 import SignInModalContent from "./SignInModalContent"
 import { $signInUserModalStore, closeSignInModal } from "../../../store/signInModalStore"
 

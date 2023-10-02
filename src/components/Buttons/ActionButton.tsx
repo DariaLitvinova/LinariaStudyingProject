@@ -1,7 +1,7 @@
 import { COLORS } from '../../style_variables/COLORS'
-import { Button } from '../LinariaComponents/Button'
+import { ButtonSC } from './Button.styled'
 
-interface ActionButtonProps {
+interface IActionButtonProps {
   isActive: boolean
   setIsActive: (newState: boolean) => void
   children: JSX.Element
@@ -11,11 +11,11 @@ const ActionButton = ({
   isActive,
   setIsActive,
   children,
-}: ActionButtonProps) => {
+}: IActionButtonProps) => {
   return (
-    <Button
-      gap={8}
-      height={52}
+    <ButtonSC
+      gap='8px'
+      height='52px'
       width='52px'
       backgroundColor={COLORS.NEW_SURFACE_OPACITY_3}
       backgroundColorHover={COLORS.NEW_SURFACE_3}
@@ -24,7 +24,7 @@ const ActionButton = ({
       backgroundColorDisabled={COLORS.NEW_SURFACE_3}
     >
       {children}
-    </Button>
+    </ButtonSC>
   )
 }
 

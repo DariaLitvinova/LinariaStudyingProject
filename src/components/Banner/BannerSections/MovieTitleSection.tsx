@@ -3,28 +3,28 @@ import {
   MOVIE_LABELS,
   MOVIE_TITLE,
 } from '../../../constants/constants'
-import MovieLabel from '../../Elements/MovieLabel'
-import { Block } from '../../LinariaComponents/Block'
-import { Headline } from '../../LinariaComponents/Headline'
-import { Typography } from '../../LinariaComponents/Typography'
+import MovieLabel from '../../MovieLabel/MovieLabel'
+import { WrapperSC } from '../../Wrapper/Wrapper.styled'
+import { HeadlineSC } from '../../HeadLine/Headline.styled'
+import { TypographySC } from '../../Typography/Typography.styled'
+import { Orientation } from '../../../style_variables/CSS_PROPERTIES'
 
 const MovieTitleSection = () => {
   return (
-    <Block gap={16}>
-      <Block gap={8}>
-        <Block orientation='horizontal' gap={8}>
+    <WrapperSC gap='16px'>
+      <WrapperSC gap='8px'>
+        <WrapperSC orientation={Orientation.Row} gap='8px'>
           {MOVIE_LABELS.map(({ id, text }: { id: number; text: string }) => (
             <MovieLabel key={id} text={text} />
           ))}
-        </Block>
+        </WrapperSC>
 
-        <Headline weight='700' lineHeight='51px'>
+        <HeadlineSC weight='700' lineHeight='51px'>
           {MOVIE_TITLE}
-        </Headline>
+        </HeadlineSC>
+      </WrapperSC>
 
-      </Block>
-
-      <Typography
+      <TypographySC
         lineHeight='24px'
         weight='400'
         height='48px'
@@ -34,8 +34,8 @@ const MovieTitleSection = () => {
         boxOrient='vertical'
       >
         {MOVIE_DESCRIPTION}
-      </Typography>
-    </Block>
+      </TypographySC>
+    </WrapperSC>
   )
 }
 

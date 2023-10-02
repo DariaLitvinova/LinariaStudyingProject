@@ -1,19 +1,23 @@
 import PrimarySquareButton from '../../Buttons/PrimarySquareButton'
-import { Block } from '../../LinariaComponents/Block'
-import { Input } from '../../LinariaComponents/Input/Input'
+import { WrapperSC } from '../../Wrapper/Wrapper.styled'
+import { Input } from '../../Input/Input'
 import { useStore } from 'effector-react'
-import { RadioButtonGroup } from '../../LinariaComponents/Radio/RadioButtonGroup'
-import { RadioButton } from '../../LinariaComponents/Radio/RadioButton'
-import { COUNTRIES, GENDER_RADIO_VALUES } from '../../../constants/constants'
-import { Dropdown } from '../../LinariaComponents/Dropdown/Dropdown'
-import { DropdownItem } from '../../LinariaComponents/Dropdown/DropdownItem'
-import { Checkbox } from '../../LinariaComponents/Checkbox/Checkbox'
-import { FileInputUpload } from '../../LinariaComponents/FileInputUpload/FileInputUpload'
+import { RadioButtonGroup } from '../../Radio/RadioButtonGroup'
+import { RadioButton } from '../../Radio/RadioButton'
+import {
+  BTN_TITLES,
+  COUNTRIES,
+  GENDER_RADIO_VALUES,
+} from '../../../constants/constants'
+import { Dropdown } from '../../Dropdown/Dropdown'
+import { DropdownItem } from '../../Dropdown/DropdownItem'
+import { Checkbox } from '../../Checkbox/Checkbox'
+import { FileInputUpload } from '../../FileInputUpload/FileInputUpload'
 import { COLORS } from '../../../style_variables/COLORS'
 import { useForm } from 'effector-forms'
-import { Loader } from '../../LinariaComponents/Loader/Loader'
+import { LoaderSC } from '../../Loader/Loader.styled'
 import { submitFormFx, userForm } from '../../../store/userForm/model'
-import { Typography } from '../../LinariaComponents/Typography'
+import { ErrorTypographySC } from '../../Typography/Typography.styled'
 import { $errorResponse } from '../../../store/errorResponseStore'
 
 const ContactUsModalContent = () => {
@@ -25,17 +29,9 @@ const ContactUsModalContent = () => {
   return (
     <>
       {isErrorResponse && (
-        <Typography
-          color={COLORS.ERROR}
-          size={12}
-          style={{
-            border: `1px solid var(${COLORS.ERROR})`,
-            padding: '10px',
-            borderRadius: '5px',
-          }}
-        >
+        <ErrorTypographySC size={12} textAlign='center' isBorder width='auto'>
           {isErrorResponse}
-        </Typography>
+        </ErrorTypographySC>
       )}
       <Input
         name='name'
@@ -122,7 +118,7 @@ const ContactUsModalContent = () => {
         errorText={fields.photo.errorText()}
         onChange={(e) => fields.photo.onChange(e.target.value)}
       />
-      <Block
+      <WrapperSC
         height='1px'
         bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2}
         margin='10px 0'
@@ -136,18 +132,17 @@ const ContactUsModalContent = () => {
         errorText={fields.confirmation.errorText()}
         onChange={(e) => fields.confirmation.onChange(e.target.checked)}
       />
-      <Block
+      <WrapperSC
         height='1px'
         bgColor={COLORS.NEW_SURFACE_ON_SURFACE_2}
         margin='10px 0'
       />
       <PrimarySquareButton
-        style={{ minWidth: '150px' }}
         disabled={pending}
-        text={pending ? '' : 'Contact us'}
+        text={pending ? '' : BTN_TITLES.ContactUs}
         type='submit'
       >
-        {pending ? <Loader /> : null}
+        {pending ? <LoaderSC /> : null}
       </PrimarySquareButton>
     </>
   )

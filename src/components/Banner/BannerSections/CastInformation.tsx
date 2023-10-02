@@ -1,23 +1,24 @@
-import { Block } from '../../LinariaComponents/Block'
-import { Typography } from '../../LinariaComponents/Typography'
+import { WrapperSC } from '../../Wrapper/Wrapper.styled'
+import { TypographySC } from '../../Typography/Typography.styled'
+import { Orientation } from '../../../style_variables/CSS_PROPERTIES'
 
-interface CastInformationProps {
+interface ICastInformationProps {
   data: {
     title: string
     text: string
   }
 }
 
-const CastInformation = ({ data }: CastInformationProps) => {
+const CastInformation = ({ data }: ICastInformationProps) => {
   return (
-    <Block gap={32} orientation='horizontal'>
-      <Typography weight='700' lineHeight='24px' minWidth='73px'>
+    <WrapperSC gap='32px' orientation={Orientation.Row}>
+      <TypographySC weight='700' lineHeight='24px' minWidth='73px'>
         {data.title}
-      </Typography>
-      <Typography weight='400' lineHeight='24px'>
+      </TypographySC>
+      <TypographySC weight='400' lineHeight='24px'>
         {data.text}
-      </Typography>
-    </Block>
+      </TypographySC>
+    </WrapperSC>
   )
 }
 

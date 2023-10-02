@@ -6,7 +6,8 @@ import SecondaryButton from '../../Buttons/SecondaryButton'
 import HeartIcon from '../../Icons/HeartIcon'
 import InfoIcon from '../../Icons/InfoIcon'
 import PlayIcon from '../../Icons/PlayIcon'
-import { Block } from '../../LinariaComponents/Block'
+import { WrapperSC } from '../../Wrapper/Wrapper.styled'
+import { Orientation } from '../../../style_variables/CSS_PROPERTIES'
 
 const ButtonsSection = () => {
   const [isFavourite, setIsFavourite] = useState<boolean>(false)
@@ -16,7 +17,7 @@ const ButtonsSection = () => {
   )
 
   return (
-    <Block gap={16} orientation='horizontal'>
+    <WrapperSC gap='16px' orientation={Orientation.Row}>
       <PrimaryButton text={BTN_TITLES.Watch}>
         <PlayIcon />
       </PrimaryButton>
@@ -28,7 +29,7 @@ const ButtonsSection = () => {
       <ActionButton isActive={isFavourite} setIsActive={setIsFavourite}>
         {actionIcon({ isActive: isFavourite })}
       </ActionButton>
-    </Block>
+    </WrapperSC>
   )
 }
 

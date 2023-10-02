@@ -1,18 +1,17 @@
 import { COLORS } from '../../style_variables/COLORS'
-import { Button } from '../LinariaComponents/Button'
-import { ButtonText } from '../LinariaComponents/ButtonText'
+import { ButtonSC } from './Button.styled'
+import { ButtonText } from './ButtonText'
 
-interface PrimaryButtonProps {
+interface IPrimaryButtonProps {
   children?: JSX.Element
   text: string
 }
 
-const PrimaryButton = ({ children, text }: PrimaryButtonProps) => {
+const PrimaryButton = ({ children, text }: IPrimaryButtonProps) => {
   return (
-    <Button
-      display='inline-flex'
-      gap={8}
-      height={52}
+    <ButtonSC
+      gap='8px'
+      height='52px'
       padding='0px 24px'
       backgroundColor={COLORS.NEW_PRIMARY_GRADIENT}
       backgroundColorHover={COLORS.NEW_PRIMARY_GRADIENT_HOVER}
@@ -23,7 +22,7 @@ const PrimaryButton = ({ children, text }: PrimaryButtonProps) => {
       <ButtonText lineHeight='24px' weight='700'>
         {text}
       </ButtonText>
-    </Button>
+    </ButtonSC>
   )
 }
 

@@ -1,30 +1,26 @@
 import { COLORS } from '../../style_variables/COLORS'
-import { Button } from '../LinariaComponents/Button'
-import { ButtonText } from '../LinariaComponents/ButtonText'
+import { ButtonSC } from './Button.styled'
+import { ButtonText } from './ButtonText'
 
-interface TagButtonProps {
+interface ITagButtonProps {
   text: string
 }
 
-const TagButton = ({ text }: TagButtonProps) => {
+const TagButton = ({ text }: ITagButtonProps) => {
   return (
-    <Button
-      display='inline-flex'
-      gap={10}
+    <ButtonSC
+      gap='10px'
       backgroundColor='transparent'
       backgroundColorHover='transparent'
       backgroundColorActive='transparent'
-      color={`var(${COLORS.NEW_SURFACE_ON_SURFACE_2})`}
-      colorActive={`var(${COLORS.NEW_SURFACE_ON_SURFACE_3})`}
+      fontColor={COLORS.NEW_SURFACE_ON_SURFACE_2}
+      fontColorActive={COLORS.NEW_SURFACE_ON_SURFACE_3}
+      backgroundColorDisabled={COLORS.NEW_SURFACE_3}
     >
-      <ButtonText
-        lineHeight='16px'
-        weight='700'
-        size={12}
-      >
+      <ButtonText lineHeight='16px' weight='700' size={12}>
         {text}
       </ButtonText>
-    </Button>
+    </ButtonSC>
   )
 }
 

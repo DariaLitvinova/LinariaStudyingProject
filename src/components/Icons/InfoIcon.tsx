@@ -1,7 +1,7 @@
-import { Icon } from '../LinariaComponents/Icon'
+import { IconSC } from './Icon.styled'
 
 const InfoIcon = () => {
-  return <Icon url='src/assets/images/icons/shape.svg' />
+  return <IconSC url='src/assets/images/icons/shape.svg' />
 }
 
 export default InfoIcon

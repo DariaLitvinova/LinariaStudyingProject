@@ -1,6 +1,6 @@
 import { useStore, useStoreMap } from 'effector-react'
 import { $signInForm, setSignInField } from '../../../../store/signInForm/model'
-import { Input } from '../../../LinariaComponents/Input/Input'
+import { Input } from '../../../Input/Input'
 import { SignInErrorsType, SignInFormType } from '../../../../store/signInForm/types'
 
 interface IField {

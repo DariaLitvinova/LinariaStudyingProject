@@ -1,7 +1,7 @@
-import { Icon } from '../LinariaComponents/Icon'
+import { IconSC } from './Icon.styled'
 
 const PlayIcon = () => {
-  return <Icon url='src/assets/images/icons/play.svg' />
+  return <IconSC url='src/assets/images/icons/play.svg' />
 }
 
 export default PlayIcon

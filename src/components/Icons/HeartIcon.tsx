@@ -1,15 +1,15 @@
-import { Icon } from '../LinariaComponents/Icon'
+import { IconSC } from './Icon.styled'
 
-interface HeartIconProps {
+interface IHeartIconProps {
   isActive: boolean
 }
 
-const HeartIcon = ({ isActive }: HeartIconProps) => {
+const HeartIcon = ({ isActive }: IHeartIconProps) => {
   if (isActive) {
-    return <Icon url='src/assets/images/icons/heart-fill.svg' />
+    return <IconSC url='src/assets/images/icons/heart-fill.svg' />
   }
 
-  return <Icon url='src/assets/images/icons/heart.svg' />
+  return <IconSC url='src/assets/images/icons/heart.svg' />
 }
 
 export default HeartIcon

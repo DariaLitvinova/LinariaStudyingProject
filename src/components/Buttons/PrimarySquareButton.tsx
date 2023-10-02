@@ -1,14 +1,12 @@
-import { CSSProperties } from '@linaria/core'
 import { COLORS } from '../../style_variables/COLORS'
-import { SquareButton } from '../LinariaComponents/Button'
-import { ButtonText } from '../LinariaComponents/ButtonText'
+import { SquareButtonSC } from './Button.styled'
+import { ButtonText } from './ButtonText'
 
-interface PrimaryButtonProps {
+interface IPrimaryButtonProps {
   children?: JSX.Element | null
   text: string
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
-  style?: CSSProperties
   disabled?: boolean
 }
 
@@ -17,29 +15,26 @@ const PrimarySquareButton = ({
   text,
   onClick,
   type = 'button',
-  style,
   disabled,
-}: PrimaryButtonProps) => {
+}: IPrimaryButtonProps) => {
   return (
-    <SquareButton
+    <SquareButtonSC
       type={type}
-      display='inline-flex'
-      gap={8}
-      height={52}
+      gap='8px'
+      height='52px'
       padding='0px 24px'
       backgroundColor={COLORS.NEW_PRIMARY_GRADIENT}
       backgroundColorHover={COLORS.NEW_PRIMARY_GRADIENT_HOVER}
       backgroundColorActive={COLORS.NEW_PRIMARY_GRADIENT_PRESSED}
       backgroundColorDisabled={COLORS.NEW_SURFACE_3}
       onClick={onClick}
-      style={style}
       disabled={disabled}
     >
       {children}
       <ButtonText lineHeight='24px' weight='700'>
         {text}
       </ButtonText>
-    </SquareButton>
+    </SquareButtonSC>
   )
 }
 
