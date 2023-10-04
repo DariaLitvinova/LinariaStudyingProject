@@ -7,14 +7,13 @@ import MovieTitleSection from './BannerSections/MovieTitleSection'
 import { useStore } from 'effector-react'
 import { useEffect } from 'react'
 import SuccessModal from '../Modals/SuccessModal/SuccessModal'
-import ContactUsModal from '../Modals/ContactUsModal/ContactUsModal'
-import SignInModal from '../Modals/SignInModal/SignInModal'
+import ContactUsModalForms from '../Modals/ContactUsModalForms/ContactUsModalForms'
 import {
   $isSuccessModal,
   closeModalSuccess,
 } from '../../store/successModalStore'
 import { openUserModalForm } from '../../store/userFormModalStore'
-import { openSignInModal } from '../../store/signInModalStore'
+import { openContactUsModal } from '../../store/contactUsModalStore'
 import { BTN_TITLES } from '../../constants/constants'
 import { AbsoluteWrapperSC } from '../Wrapper/AbsoluteWrapper.styled'
 import {
@@ -22,6 +21,7 @@ import {
   JustifyContent,
   Orientation,
 } from '../../style_variables/CSS_PROPERTIES'
+import ContactUsModal from '../Modals/ContactUsModal/ContactUsModal'
 
 const BannerContent = () => {
   const isSuccess = useStore($isSuccessModal)
@@ -48,12 +48,12 @@ const BannerContent = () => {
         right='20px'
       >
         <PrimarySquareButton
-          text={BTN_TITLES.ContactUs}
+          text={BTN_TITLES.ContactUsForms}
           onClick={openUserModalForm}
         />
         <PrimarySquareButton
-          text={BTN_TITLES.SignIn}
-          onClick={openSignInModal}
+          text={BTN_TITLES.ContactUs}
+          onClick={openContactUsModal}
         />
       </AbsoluteWrapperSC>
 
@@ -64,8 +64,8 @@ const BannerContent = () => {
 
       {isSuccess && <SuccessModal />}
 
+      <ContactUsModalForms />
       <ContactUsModal />
-      <SignInModal />
     </WrapperSC>
   )
 }

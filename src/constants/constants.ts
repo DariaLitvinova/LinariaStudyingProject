@@ -27,8 +27,8 @@ export const CAST_INFORMATION = [
 export enum BTN_TITLES {
   Watch = 'Watch Now',
   Details = 'Details',
-  SignIn = 'Sign In',
   ContactUs = 'Contact us',
+  ContactUsForms = 'Contact us, using eff-forms',
 }
 
 export const MOVIE_TAGS = [
@@ -62,7 +62,6 @@ export const MSG = {
 
 export enum ERROR_MSG {
   Required = 'Required field',
-  PasswordMismatch = 'Please make sure your passwords match',
   NotChecked = 'Should be checked',
   NotEmail = `Doesn't match email format`,
   NotPhone = `Doesn't match phone format`,

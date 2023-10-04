@@ -1,34 +1,29 @@
-import { ModalForm } from '../../ModalForm/ModalForm'
-import { LayerModalFixed } from '../../LayerModal/LayerModalFixed'
-import { useStore } from 'effector-react'
-import { SyntheticEvent } from 'react'
-import { useForm } from 'effector-forms'
-import ContactUsModalContent from './ContactUsModalContent'
-import { userForm } from '../../../store/userForm/model'
-import {
-  $userModalStore,
-  closeUserModalForm,
-} from '../../../store/userFormModalStore'
+import { useStore } from "effector-react"
+import { SyntheticEvent } from "react"
+import { submitContactUs } from "../../../store/contactUsForm/model"
+import { LayerModalFixed } from "../../LayerModal/LayerModalFixed"
+import { ModalForm } from "../../ModalForm/ModalForm"
+import ContactUsModalContent from "./ContactUsModalContent"
+import { $contactUsUserModalStore, closeContactUsModal } from "../../../store/contactUsModalStore"
 
 const ContactUsModal = () => {
-  const { isOpenModal } = useStore($userModalStore)
 
-  const { submit } = useForm(userForm)
+    const { isOpenContactUsModal } = useStore($contactUsUserModalStore)
 
-  const onSubmit = (e: SyntheticEvent<Element, Event>) => {
+  const onLoginSubmit = (e: SyntheticEvent<Element, Event>) => {
     e.preventDefault()
-    submit()
+    submitContactUs()
   }
 
   return (
-    <LayerModalFixed
-      isOpened={isOpenModal}
-      onClickForCloseModal={closeUserModalForm}
-    >
-      <ModalForm width='363px' height='auto' onSubmit={onSubmit}>
-        <ContactUsModalContent />
-      </ModalForm>
-    </LayerModalFixed>
+      <LayerModalFixed
+        isOpened={isOpenContactUsModal}
+        onClickForCloseModal={closeContactUsModal}
+      >
+        <ModalForm width='463px' height='auto' onSubmit={onLoginSubmit}>
+          <ContactUsModalContent />
+        </ModalForm>
+      </LayerModalFixed>
   )
 }
 

@@ -2,20 +2,18 @@ import { WrapperSC } from '../../Wrapper/Wrapper.styled'
 import { useForm } from 'effector-forms'
 import { TypographySC } from '../../Typography/Typography.styled'
 import { COLORS } from '../../../style_variables/COLORS'
-import { userForm } from '../../../store/userForm/model'
 import { useStore } from 'effector-react'
-import { $signInForm } from '../../../store/signInForm/model'
+import { $contactUsForm } from '../../../store/contactUsForm/model'
 import { MSG } from '../../../constants/constants'
 import {
   AlignItems,
   JustifyContent,
 } from '../../../style_variables/CSS_PROPERTIES'
+import { userForm } from '../../../store/userForm/model'
 
 const SuccessModal = () => {
   const { fields } = useForm(userForm)
-  const { login } = useStore($signInForm)
-
-  const name = fields.name.value
+  const { name } = useStore($contactUsForm)
 
   return (
     <WrapperSC
@@ -35,7 +33,8 @@ const SuccessModal = () => {
         border={`var(${COLORS.NEW_OUTLINE_BORDER}) 4px solid`}
       >
         <TypographySC color={COLORS.NEW_SURFACE_3} size={24}>
-          {name ? `${name}${MSG.THANKS_REQ}` : `${MSG.SIGNED_AS}${login}`}
+          {name && `${name}${MSG.THANKS_REQ}`}
+          {fields.name.value && `${fields.name.value}${MSG.THANKS_REQ}`}
         </TypographySC>
       </WrapperSC>
     </WrapperSC>
