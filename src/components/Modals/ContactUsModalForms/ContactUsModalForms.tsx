@@ -6,12 +6,12 @@ import { useForm } from 'effector-forms'
 import ContactUsModalContentForms from './ContactUsModalContentForms'
 import { userForm } from '../../../store/userForm/model'
 import {
-  $userModalStore,
+  $isOpenModal,
   closeUserModalForm,
 } from '../../../store/userFormModalStore'
 
 const ContactUsModalForms = () => {
-  const { isOpenModal } = useStore($userModalStore)
+  const isOpenModal = useStore($isOpenModal)
 
   const { submit } = useForm(userForm)
 

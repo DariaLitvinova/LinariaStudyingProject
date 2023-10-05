@@ -4,11 +4,11 @@ import { submitContactUs } from "../../../store/contactUsForm/model"
 import { LayerModalFixed } from "../../LayerModal/LayerModalFixed"
 import { ModalForm } from "../../ModalForm/ModalForm"
 import ContactUsModalContent from "./ContactUsModalContent"
-import { $contactUsUserModalStore, closeContactUsModal } from "../../../store/contactUsModalStore"
+import { $isOpenContactUsModal, closeContactUsModal } from "../../../store/contactUsModalStore"
 
 const ContactUsModal = () => {
 
-    const { isOpenContactUsModal } = useStore($contactUsUserModalStore)
+    const isOpenContactUsModal = useStore($isOpenContactUsModal)
 
   const onLoginSubmit = (e: SyntheticEvent<Element, Event>) => {
     e.preventDefault()
