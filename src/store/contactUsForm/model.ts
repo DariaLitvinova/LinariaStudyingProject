@@ -1,12 +1,10 @@
-import {
-  createEffect,
-  createEvent,
-  createStore,
-  forward,
-  sample,
-} from 'effector'
+import { createEffect, createEvent, createStore, sample } from 'effector'
 import { checkErrors } from './utils'
-import { ContactUsFormType, ContactUsKeyType } from './types'
+import {
+  ContactUsErrorsType,
+  ContactUsFormType,
+  ContactUsKeyType,
+} from './types'
 
 const initialState = {
   name: '',
@@ -16,31 +14,23 @@ const initialState = {
   confirmation: false,
   gender: '',
   country: '',
-  errors: {
-    name: '',
-    email: '',
-    phone: '',
-    file: '',
-    confirmation: '',
-    gender: '',
-    country: '',
-  },
 }
 
-export const validateFormFx = createEffect(
-  (contactUsForm: ContactUsFormType) => {
-    const errorMsg = checkErrors(contactUsForm)
-    return new Promise<void>((resolve, reject) => {
-      if (Object.values(errorMsg).some((err) => Boolean(err))) reject()
-      resolve()
-    })
-  }
-)
+const initialErrorState = {
+  name: '',
+  email: '',
+  phone: '',
+  file: '',
+  confirmation: '',
+  gender: '',
+  country: '',
+}
 
 export const submitContactUs = createEvent()
 export const submitted = createEvent()
 export const setContactUsField = createEvent<ContactUsKeyType>()
 export const resetContactUsForm = createEvent()
+const checkValidationErrors = createEvent<ContactUsFormType>()
 
 export const sendContactUsFormFx = createEffect(
   (form: ContactUsFormType) =>
@@ -54,18 +44,15 @@ export const sendContactUsFormFx = createEffect(
     )
 )
 
-export const $contactUsForm = createStore<ContactUsFormType>(initialState)
-  .on(setContactUsField, (state, { key, value }: ContactUsKeyType) => {
+export const $errors = createStore<ContactUsErrorsType>(initialErrorState)
+  .on(setContactUsField, (state, { key }: ContactUsKeyType) => {
     return {
       ...state,
-      [key]: value,
-      errors: {
-        ...state.errors,
-        [key]: '',
-      },
+      [key]: '',
     }
   })
-  .on(validateFormFx.fail, (state) => {
+  .reset(resetContactUsForm)
+  .on(checkValidationErrors, (state, payload) => {
     const {
       nameError,
       emailError,
@@ -74,20 +61,25 @@ export const $contactUsForm = createStore<ContactUsFormType>(initialState)
       countryError,
       genderError,
       confirmationError,
-    } = checkErrors(state)
+    } = checkErrors(payload)
 
     return {
       ...state,
-      errors: {
-        ...state.errors,
-        name: nameError,
-        email: emailError,
-        phone: phoneError,
-        file: fileError,
-        country: countryError,
-        gender: genderError,
-        confirmation: confirmationError,
-      },
+      name: nameError,
+      email: emailError,
+      phone: phoneError,
+      file: fileError,
+      country: countryError,
+      gender: genderError,
+      confirmation: confirmationError,
+    }
+  })
+
+export const $contactUsForm = createStore<ContactUsFormType>(initialState)
+  .on(setContactUsField, (state, { key, value }: ContactUsKeyType) => {
+    return {
+      ...state,
+      [key]: value,
     }
   })
   .reset(resetContactUsForm)
@@ -95,10 +87,18 @@ export const $contactUsForm = createStore<ContactUsFormType>(initialState)
 sample({
   clock: submitContactUs,
   source: $contactUsForm,
-  target: validateFormFx,
+  filter: (contactUsForm) => {
+    const errorMsg = checkErrors(contactUsForm)
+    return !Object.values(errorMsg).some((err) => Boolean(err))
+  },
+  target: submitted,
 })
 
-forward({ from: validateFormFx.done, to: submitted })
+sample({
+  clock: submitContactUs,
+  source: $contactUsForm,
+  target: checkValidationErrors,
+})
 
 sample({
   clock: submitted, // when `submitted` is triggered

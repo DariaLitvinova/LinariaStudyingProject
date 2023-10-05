@@ -16,7 +16,6 @@ export type ContactUsFormType = {
   confirmation: boolean
   gender: string
   country: string
-  errors: ContactUsErrorsType
 }
 
 export type ContactUsKeyType = {

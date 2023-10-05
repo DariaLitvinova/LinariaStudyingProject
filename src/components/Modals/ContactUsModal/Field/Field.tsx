@@ -1,6 +1,7 @@
 import { useStore, useStoreMap } from 'effector-react'
 import {
   $contactUsForm,
+  $errors,
   setContactUsField,
 } from '../../../../store/contactUsForm/model'
 import { Input } from '../../../Input/Input'
@@ -17,7 +18,7 @@ interface IField {
 }
 
 export const Field = ({ name, type, label, disabled }: IField) => {
-  const { errors } = useStore($contactUsForm)
+  const errors = useStore($errors)
   const handleChange = setContactUsField.prepend((event: any) => ({
     key: event.target.name,
     value: event.target.value,

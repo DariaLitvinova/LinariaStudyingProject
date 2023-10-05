@@ -15,6 +15,7 @@ import { COLORS } from '../../../style_variables/COLORS'
 import { LoaderSC } from '../../Loader/Loader.styled'
 import {
   $contactUsForm,
+  $errors,
   sendContactUsFormFx,
   setContactUsField,
 } from '../../../store/contactUsForm/model'
@@ -24,7 +25,8 @@ import { $errorResponse } from '../../../store/errorResponseStore'
 import { ErrorTypographySC } from '../../Typography/Typography.styled'
 
 const contactUsModalContent = () => {
-  const { file, country, gender, errors } = useStore($contactUsForm)
+  const { file, country, gender } = useStore($contactUsForm)
+  const errors = useStore($errors)
   const pendingcontactUs = useStore(sendContactUsFormFx.pending)
   const isErrorResponse = useStore($errorResponse)
 
