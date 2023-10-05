@@ -1,15 +1,27 @@
-import { createEvent, createStore, sample } from 'effector'
+import { createEffect, createStore, sample } from 'effector'
 import { submitFormFx, userForm } from './userForm/model'
 import { resetContactUsForm, sendContactUsFormFx } from './contactUsForm/model'
 
-export const closeModalSuccess = createEvent()
+export const closeModalSuccessFx = createEffect(
+  () =>
+    new Promise<void>((resolve) =>
+      setTimeout(() => {
+        resolve()
+      }, 3000)
+    )
+)
 
 export const $isSuccessModal = createStore<boolean>(false)
   .on(submitFormFx.doneData, () => true)
   .on(sendContactUsFormFx.doneData, () => true)
-  .on(closeModalSuccess, () => false)
+  .on(closeModalSuccessFx.doneData, () => false)
 
 sample({
-  clock: closeModalSuccess,
+  clock: [submitFormFx.doneData, sendContactUsFormFx.doneData],
+  target: closeModalSuccessFx,
+})
+
+sample({
+  clock: closeModalSuccessFx.done,
   target: [userForm.resetValues, resetContactUsForm],
 })

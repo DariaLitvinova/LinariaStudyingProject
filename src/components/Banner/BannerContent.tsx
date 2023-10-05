@@ -5,13 +5,9 @@ import ButtonsSection from './BannerSections/ButtonsSection'
 import CreatorSection from './BannerSections/CreatorSection'
 import MovieTitleSection from './BannerSections/MovieTitleSection'
 import { useStore } from 'effector-react'
-import { useEffect } from 'react'
 import SuccessModal from '../Modals/SuccessModal/SuccessModal'
 import ContactUsModalForms from '../Modals/ContactUsModalForms/ContactUsModalForms'
-import {
-  $isSuccessModal,
-  closeModalSuccess,
-} from '../../store/successModalStore'
+import { $isSuccessModal } from '../../store/successModalStore'
 import { openUserModalForm } from '../../store/userFormModalStore'
 import { openContactUsModal } from '../../store/contactUsModalStore'
 import { BTN_TITLES } from '../../constants/constants'
@@ -25,14 +21,6 @@ import ContactUsModal from '../Modals/ContactUsModal/ContactUsModal'
 
 const BannerContent = () => {
   const isSuccess = useStore($isSuccessModal)
-
-  useEffect(() => {
-    if (isSuccess) {
-      setTimeout(() => {
-        closeModalSuccess()
-      }, 5000)
-    }
-  }, [isSuccess])
 
   return (
     <WrapperSC
